@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+
+const tutorialCategories = [
+  {
+    title: 'Frontend Development',
+    description: 'Master modern frontend technologies',
+    topics: ['HTML/CSS', 'JavaScript', 'React', 'Vue', 'Astro'],
+    icon: '🎨'
+  },
+  {
+    title: 'Backend Development',
+    description: 'Build robust server-side applications',
+    topics: ['Node.js', 'Python', 'Databases', 'APIs', 'Authentication'],
+    icon: '⚙️'
+  },
+  {
+    title: 'Full Stack',
+    description: 'End-to-end application development',
+    topics: ['MERN Stack', 'JAMstack', 'Deployment', 'DevOps'],
+    icon: '🔧'
+  },
+  {
+    title: 'Web Fundamentals',
+    description: 'Strong foundation in web technologies',
+    topics: ['Git', 'Command Line', 'Web Security', 'Performance'],
+    icon: '📐'
+  }
+];
+---
+
+<BaseLayout title="Tutorials" description="Learn web development with our comprehensive tutorials">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-blue-50 to-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Learn Web Development
+        </h1>
+        <p class="text-xl text-gray-600">
+          From beginner basics to advanced techniques, our tutorials will guide you 
+          through your web development journey.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tutorial Categories -->
+  <section class="py-16" aria-labelledby="categories-heading">
+    <div class="container mx-auto px-4">
+      <h2 id="categories-heading" class="sr-only">Tutorial Categories</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {tutorialCategories.map((category) => (
+          <article class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
+            <div class="flex items-start space-x-4">
+              <span class="text-4xl" role="img" aria-label={`${category.title} icon`}>
+                {category.icon}
+              </span>
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold mb-2">{category.title}</h3>
+                <p class="text-gray-600 mb-4">{category.description}</p>
+                <div class="flex flex-wrap gap-2">
+                  {category.topics.map((topic) => (
+                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
+                      {topic}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Tutorials -->
+  <section class="py-16 bg-gray-50" aria-labelledby="featured-heading">
+    <div class="container mx-auto px-4">
+      <h2 id="featured-heading" class="text-3xl font-bold text-center mb-12">
+        Featured Tutorials
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <article class="bg-white rounded-lg shadow-md p-6">
+          <span class="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm mb-3">
+            Beginner
+          </span>
+          <h3 class="text-xl font-bold mb-2">Getting Started with HTML & CSS</h3>
+          <p class="text-gray-600 mb-4">Learn the fundamentals of web development with this comprehensive guide.</p>
+          <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">
+            Start Learning →
+          </a>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-md p-6">
+          <span class="inline-block px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm mb-3">
+            Intermediate
+          </span>
+          <h3 class="text-xl font-bold mb-2">Building Your First React App</h3>
+          <p class="text-gray-600 mb-4">Create interactive UIs with React, from setup to deployment.</p>
+          <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">
+            Start Learning →
+          </a>
+        </article>
+
+        <article class="bg-white rounded-lg shadow-md p-6">
+          <span class="inline-block px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm mb-3">
+            Advanced
+          </span>
+          <h3 class="text-xl font-bold mb-2">Full Stack Development with Astro</h3>
+          <p class="text-gray-600 mb-4">Master modern web architecture with this cutting-edge framework.</p>
+          <a href="#" class="text-blue-600 hover:text-blue-800 font-medium">
+            Start Learning →
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6">Can't Find What You're Looking For?</h2>
+      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+        We're constantly adding new tutorials. Subscribe to our newsletter to stay updated 
+        on the latest content.
+      </p>
+      <Button variant="primary">
+        Subscribe to Newsletter
+      </Button>
+    </div>
+  </section>
+</BaseLayout>

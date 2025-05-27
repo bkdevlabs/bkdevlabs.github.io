@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+
+const services = [
+  {
+    title: 'Custom Web Development',
+    description: 'Tailored web applications built with modern technologies to meet your specific business needs.',
+    features: ['Responsive Design', 'API Integration', 'Database Design', 'Performance Optimization']
+  },
+  {
+    title: 'Technical Consulting',
+    description: 'Expert guidance on technology stack selection, architecture design, and best practices.',
+    features: ['Architecture Review', 'Tech Stack Selection', 'Code Review', 'Performance Audit']
+  },
+  {
+    title: 'Team Training',
+    description: 'Upskill your development team with customized training programs and workshops.',
+    features: ['Custom Workshops', 'Code Labs', 'Best Practices', 'Mentorship']
+  },
+  {
+    title: 'Maintenance & Support',
+    description: 'Ongoing support to keep your applications running smoothly and securely.',
+    features: ['Bug Fixes', 'Security Updates', 'Feature Enhancements', '24/7 Support']
+  }
+];
+
+const process = [
+  { step: '1', title: 'Discovery', description: 'We understand your needs and goals' },
+  { step: '2', title: 'Planning', description: 'Create a detailed project roadmap' },
+  { step: '3', title: 'Development', description: 'Build your solution iteratively' },
+  { step: '4', title: 'Delivery', description: 'Deploy and provide ongoing support' }
+];
+---
+
+<BaseLayout title="Consultancy" description="Professional web development consultancy services">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-green-50 to-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Web Development Consultancy
+        </h1>
+        <p class="text-xl text-gray-600 mb-8">
+          Transform your ideas into powerful web solutions with our expert consulting services.
+        </p>
+        <Button href="#contact" variant="primary">
+          Get a Free Consultation
+        </Button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="py-16" aria-labelledby="services-heading">
+    <div class="container mx-auto px-4">
+      <h2 id="services-heading" class="text-3xl font-bold text-center mb-12">
+        Our Consultancy Services
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {services.map((service) => (
+          <article class="bg-white rounded-lg shadow-md p-6">
+            <h3 class="text-2xl font-bold mb-3">{service.title}</h3>
+            <p class="text-gray-600 mb-4">{service.description}</p>
+            <ul class="space-y-2">
+              {service.features.map((feature) => (
+                <li class="flex items-center text-gray-700">
+                  <svg class="w-5 h-5 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-16 bg-gray-50" aria-labelledby="process-heading">
+    <div class="container mx-auto px-4">
+      <h2 id="process-heading" class="text-3xl font-bold text-center mb-12">
+        Our Process
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+        {process.map((item, index) => (
+          <div class="text-center">
+            <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              {item.step}
+            </div>
+            <h3 class="text-xl font-bold mb-2">{item.title}</h3>
+            <p class="text-gray-600">{item.description}</p>
+            {index < process.length - 1 && (
+              <div class="hidden md:block absolute top-8 left-full w-full">
+                <svg class="w-8 h-8 text-gray-300 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="text-3xl font-bold text-center mb-12">Why Choose BKDevLabs?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="flex items-start space-x-4">
+            <span class="text-3xl">🎯</span>
+            <div>
+              <h3 class="text-xl font-bold mb-2">Results-Driven</h3>
+              <p class="text-gray-600">We focus on delivering solutions that drive real business value.</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <span class="text-3xl">💡</span>
+            <div>
+              <h3 class="text-xl font-bold mb-2">Innovation First</h3>
+              <p class="text-gray-600">Leveraging cutting-edge technologies to give you a competitive edge.</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <span class="text-3xl">🤝</span>
+            <div>
+              <h3 class="text-xl font-bold mb-2">True Partnership</h3>
+              <p class="text-gray-600">We work as an extension of your team, not just vendors.</p>
+            </div>
+          </div>
+          <div class="flex items-start space-x-4">
+            <span class="text-3xl">⚡</span>
+            <div>
+              <h3 class="text-xl font-bold mb-2">Agile Delivery</h3>
+              <p class="text-gray-600">Fast, iterative development with regular updates and feedback.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 bg-gray-900 text-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6">Let's Build Something Great Together</h2>
+        <p class="text-xl mb-8">
+          Ready to discuss your project? Contact us for a free consultation.
+        </p>
+        <div class="space-y-4">
+          <p class="text-lg">
+            <a href="mailto:consultancy@bkdevlabs.com" class="hover:text-blue-400 transition-colors">
+              consultancy@bkdevlabs.com
+            </a>
+          </p>
+          <p class="text-gray-400">
+            Or fill out our contact form and we'll get back to you within 24 hours.
+          </p>
+          <Button variant="secondary">
+            Contact Form
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

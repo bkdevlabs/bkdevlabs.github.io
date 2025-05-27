@@ -1,0 +1,25 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/tutorials', label: 'Tutorials' },
+  { href: '/products', label: 'Products' },
+  { href: '/consultancy', label: 'Consultancy' },
+  { href: '/blog', label: 'Blog' }
+];
+---
+
+<nav class="hidden md:flex items-center space-x-8" aria-label="Main navigation">
+  {navItems.map((item) => (
+    <a 
+      href={item.href} 
+      class={`text-gray-700 hover:text-blue-600 font-medium transition-colors ${
+        currentPath === item.href ? 'text-blue-600' : ''
+      }`}
+      aria-current={currentPath === item.href ? 'page' : undefined}
+    >
+      {item.label}
+    </a>
+  ))}
+</nav>

@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+
+const services = [
+  {
+    title: 'Learn Development',
+    description: 'Comprehensive tutorials covering modern web technologies, from basics to advanced topics.',
+    icon: '📚',
+    href: '/tutorials'
+  },
+  {
+    title: 'Open Source Projects',
+    description: 'Innovative products and tools built with the community, for the community.',
+    icon: '🚀',
+    href: '/products'
+  },
+  {
+    title: 'Expert Consultancy',
+    description: 'Professional web development services tailored to your business needs.',
+    icon: '💼',
+    href: '/consultancy'
+  }
+];
+---
+
+<BaseLayout title="Home">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-blue-50 to-white py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">
+          Build. Learn. <span class="gradient-text">Innovate.</span>
+        </h1>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          Welcome to BKDevLabs - your partner in web development excellence. 
+          From learning resources to custom solutions, we've got you covered.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/tutorials" variant="primary">
+            Start Learning
+          </Button>
+          <Button href="/consultancy" variant="outline">
+            Get In Touch
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-16 bg-gray-50" aria-labelledby="services-heading">
+    <div class="container mx-auto px-4">
+      <h2 id="services-heading" class="text-3xl md:text-4xl font-bold text-center mb-12">
+        What We Offer
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {services.map((service) => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16" aria-labelledby="about-heading">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 id="about-heading" class="text-3xl md:text-4xl font-bold mb-6">
+          Empowering Developers Worldwide
+        </h2>
+        <p class="text-lg text-gray-600 mb-6">
+          At BKDevLabs, we believe in the power of knowledge sharing and collaboration. 
+          Our mission is to make web development accessible to everyone through 
+          high-quality tutorials, innovative open-source projects, and expert consulting services.
+        </p>
+        <p class="text-lg text-gray-600">
+          Whether you're just starting your coding journey or looking to scale your business 
+          with custom web solutions, we're here to help you succeed.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-gray-900 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        Ready to Start Your Journey?
+      </h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">
+        Join thousands of developers who are learning, building, and growing with BKDevLabs.
+      </p>
+      <Button href="/tutorials" variant="secondary">
+        Explore Tutorials
+      </Button>
+    </div>
+  </section>
+</BaseLayout>

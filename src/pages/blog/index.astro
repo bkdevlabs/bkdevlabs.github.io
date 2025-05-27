@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+
+// In a real implementation, this would come from your content collection
+const blogPosts = [
+  {
+    title: 'Getting Started with Astro for Modern Web Development',
+    excerpt: 'Learn how to build lightning-fast websites with Astro, the modern static site generator that brings the best of all frameworks.',
+    date: '2024-01-15',
+    author: 'BK Dev',
+    slug: 'getting-started-with-astro',
+    tags: ['Astro', 'Web Development', 'Tutorial']
+  },
+  {
+    title: 'Building Accessible Web Applications: A Complete Guide',
+    excerpt: 'Accessibility is not optional. Learn the best practices for creating web applications that everyone can use.',
+    date: '2024-01-10',
+    author: 'BK Dev',
+    slug: 'building-accessible-web-applications',
+    tags: ['Accessibility', 'Best Practices']
+  },
+  {
+    title: 'The Future of JavaScript: What to Expect in 2024',
+    excerpt: 'Explore the upcoming features and trends in JavaScript that will shape web development in the coming year.',
+    date: '2024-01-05',
+    author: 'BK Dev',
+    slug: 'future-of-javascript-2024',
+    tags: ['JavaScript', 'Trends']
+  }
+];
+---
+
+<BaseLayout title="Blog" description="Web development insights, tutorials, and best practices from BKDevLabs">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-indigo-50 to-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          BKDevLabs Blog
+        </h1>
+        <p class="text-xl text-gray-600">
+          Insights, tutorials, and best practices from our team of web development experts.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Posts -->
+  <section class="py-16" aria-labelledby="posts-heading">
+    <div class="container mx-auto px-4">
+      <h2 id="posts-heading" class="sr-only">Blog Posts</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {blogPosts.map((post) => (
+          <BlogCard {...post} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter CTA -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6">Stay Updated</h2>
+        <p class="text-xl text-gray-600 mb-8">
+          Get the latest web development tips and tutorials delivered to your inbox.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
+          <button
+            type="submit"
+            class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+          >
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

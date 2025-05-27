@@ -1,0 +1,68 @@
+---
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/tutorials', label: 'Tutorials' },
+  { href: '/products', label: 'Products' },
+  { href: '/consultancy', label: 'Consultancy' },
+  { href: '/blog', label: 'Blog' }
+];
+---
+
+<div class="md:hidden">
+  <button
+    id="mobile-menu-button"
+    aria-label="Toggle mobile menu"
+    aria-expanded="false"
+    class="p-2 rounded-md text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </button>
+
+  <div
+    id="mobile-menu"
+    class="hidden absolute top-16 left-0 right-0 bg-white shadow-lg"
+    role="menu"
+    aria-labelledby="mobile-menu-button"
+  >
+    <nav class="px-4 py-2 space-y-1">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+            currentPath === item.href
+              ? 'bg-blue-50 text-blue-700'
+              : 'text-gray-700 hover:bg-gray-50 hover:text-gray-900'
+          }`}
+          aria-current={currentPath === item.href ? 'page' : undefined}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</div>
+
+<script>
+  const button = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+
+  if (button && menu) {
+    button.addEventListener('click', () => {
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', (!isExpanded).toString());
+      menu.classList.toggle('hidden');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (event) => {
+      if (!button.contains(event.target as Node) && !menu.contains(event.target as Node)) {
+        button.setAttribute('aria-expanded', 'false');
+        menu.classList.add('hidden');
+      }
+    });
+  }
+</script>

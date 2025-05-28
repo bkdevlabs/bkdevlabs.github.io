@@ -4,7 +4,7 @@ import BlogCard from '../../components/BlogCard.astro';
 
 // In a real implementation, this would come from your content collection
 const blogPosts = [
-  {
+/*  {
     title: 'Getting Started with Astro for Modern Web Development',
     excerpt: 'Learn how to build lightning-fast websites with Astro, the modern static site generator that brings the best of all frameworks.',
     date: '2024-01-15',
@@ -27,8 +27,8 @@ const blogPosts = [
     author: 'BK Dev',
     slug: 'future-of-javascript-2024',
     tags: ['JavaScript', 'Trends']
-  }
-];
+  } */
+]; 
 ---
 
 <BaseLayout title="Blog" description="Web development insights, tutorials, and best practices from BKDevLabs">
@@ -46,8 +46,18 @@ const blogPosts = [
     </div>
   </section>
 
+    <section class="py-12">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="text-xl text-red-600">
+          We apologize for the inconvenience, but our Blog is currently under construction. Please check back soon for updates!
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- Blog Posts -->
-  <section class="py-16" aria-labelledby="posts-heading">
+ <!-- <section class="py-16" aria-labelledby="posts-heading">
     <div class="container mx-auto px-4">
       <h2 id="posts-heading" class="sr-only">Blog Posts</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -56,10 +66,10 @@ const blogPosts = [
         ))}
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- Newsletter CTA -->
-  <section class="py-16 bg-gray-50">
+ <!-- <section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
       <div class="max-w-2xl mx-auto text-center">
         <h2 class="text-3xl font-bold mb-6">Stay Updated</h2>
@@ -82,5 +92,5 @@ const blogPosts = [
         </form>
       </div>
     </div>
-  </section>
+  </section> -->
 </BaseLayout>

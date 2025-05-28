@@ -2,7 +2,7 @@
 
 ## About 
 
-BkDevLabs is a web development agency. Our mission is to make web development accessible to everyone through high-quality tutorials, innovative projects and services.
+BkDevLabs is a web development agency. We focus on building high-quality tutorials, innovative projects and services.
 
 ## Credits
 

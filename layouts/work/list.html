@@ -14,7 +14,7 @@
     <div class="work-grid" id="work-list">
         {{ range .Pages }}
         <div class="work-item searchable-item" data-title="{{ .Title | lower }}" data-description="{{ .Params.description | default "" | lower }}" data-tech="{{ if .Params.technologies }}{{ delimit .Params.technologies " " | lower }}{{ end }}">
-            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
             <p>{{ .Params.description | default "No description available." }}</p>
             {{ if .Params.technologies }}
             <div class="work-tags">

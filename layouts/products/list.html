@@ -15,7 +15,7 @@
         {{ range .Pages }}
         <div class="product-card searchable-item" data-title="{{ .Title | lower }}" data-description="{{ .Params.description | default "" | lower }}" data-features="{{ if .Params.features }}{{ delimit .Params.features " " | lower }}{{ end }}">
             <div class="product-icon"></div>
-            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
             <p>{{ .Params.description | default "No description available." }}</p>
             {{ if or .Params.github_link .Params.product_link }}
             <div class="project-links" style="margin-top: 1.5rem;">

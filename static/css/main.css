@@ -378,6 +378,50 @@ h2 {
     opacity: 0.7;
 }
 
+.blog-list-item {
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--spacing-xxl);
+    transition: background 0.3s;
+    background: var(--bg-color);
+}
+
+.blog-list-item:nth-child(even) {
+    background: var(--light-gray);
+}
+
+.blog-list-item:nth-child(odd) {
+    background: var(--bg-color);
+}
+
+/* Optional: Add a subtle box-shadow for more separation */
+.blog-list-item {
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+
+.blog-post,
+.work-item h2,
+.product-card h2 {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-xl);
+    color: var(--primary-color);
+    font-weight: var(--font-weight-normal);
+}
+
+.blog-list-item h2 a,
+.work-item h2 a,
+.product-card h2 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.blog-list-item h2 a:hover,
+.work-item h2 a:hover,
+.product-card h2 a:hover {
+    color: var(--accent-color);
+}
+
+.blog-post h3 a,
 .work-item h3 a,
 .product-card h3 a {
     color: inherit;
@@ -385,6 +429,7 @@ h2 {
     transition: color 0.3s ease;
 }
 
+.blog-post h3 a:hover,
 .work-item h3 a:hover,
 .product-card h3 a:hover {
     color: var(--accent-color);

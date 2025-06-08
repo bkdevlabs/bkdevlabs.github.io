@@ -55,12 +55,14 @@
             {{ range $display }}
             <div class="work-item">
                 <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-                <p>{{ .Params.description }}</p>
+                <p>{{ .Params.description | default "No description available." }}</p>
+                {{ if .Params.technologies }}
                 <div class="work-tags">
                     {{ range .Params.technologies }}
                     <span class="tag">{{ . }}</span>
                     {{ end }}
                 </div>
+                {{ end }}
             </div>
             {{ else }}
             <div class="work-item">
@@ -111,7 +113,7 @@
             <div class="product-card">
                 <div class="product-icon"></div>
                 <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-                <p>{{ .Params.description }}</p>
+                <p>{{ .Params.description | default "No description available." }}</p>
             </div>
             {{ else }}
             <div class="product-card">

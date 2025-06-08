@@ -7,16 +7,22 @@
 </div>
 
 <div class="list-container">
-    <div class="work-grid">
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search projects..." id="work-search">
+    </div>
+    
+    <div class="work-grid" id="work-list">
         {{ range .Pages }}
-        <div class="work-item">
+        <div class="work-item searchable-item" data-title="{{ .Title | lower }}" data-description="{{ .Params.description | default "" | lower }}" data-tech="{{ if .Params.technologies }}{{ delimit .Params.technologies " " | lower }}{{ end }}">
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-            <p>{{ .Params.description }}</p>
+            <p>{{ .Params.description | default "No description available." }}</p>
+            {{ if .Params.technologies }}
             <div class="work-tags">
                 {{ range .Params.technologies }}
                 <span class="tag">{{ . }}</span>
                 {{ end }}
             </div>
+            {{ end }}
             {{ if or .Params.github_link .Params.project_link }}
             <div class="project-links" style="margin-top: 1rem;">
                 {{ if .Params.project_link }}
@@ -30,5 +36,44 @@
         </div>
         {{ end }}
     </div>
+    
+    <div class="no-results" id="no-results" style="display: none;">
+        No projects found matching your search.
+    </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('work-search');
+    const workList = document.getElementById('work-list');
+    const noResults = document.getElementById('no-results');
+    const items = document.querySelectorAll('.searchable-item');
+    
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        let hasResults = false;
+        
+        items.forEach(item => {
+            const title = item.dataset.title;
+            const description = item.dataset.description;
+            const tech = item.dataset.tech;
+            
+            if (title.includes(searchTerm) || description.includes(searchTerm) || tech.includes(searchTerm)) {
+                item.style.display = 'block';
+                hasResults = true;
+            } else {
+                item.style.display = 'none';
+            }
+        });
+        
+        if (!hasResults && searchTerm) {
+            noResults.style.display = 'block';
+            workList.style.display = 'none';
+        } else {
+            noResults.style.display = 'none';
+            workList.style.display = 'grid';
+        }
+    });
+});
+</script>
 {{ end }}

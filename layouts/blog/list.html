@@ -7,9 +7,13 @@
 </div>
 
 <div class="list-container">
-    <div class="blog-list">
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search blog posts..." id="blog-search">
+    </div>
+    
+    <div class="blog-list" id="blog-list">
         {{ range .Pages }}
-        <article class="blog-list-item">
+        <article class="blog-list-item searchable-item" data-title="{{ .Title | lower }}" data-content="{{ .Plain | truncate 500 | lower }}">
             <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
             <div class="blog-meta">
                 <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
@@ -21,7 +25,45 @@
         </article>
         {{ end }}
     </div>
+    
+    <div class="no-results" id="no-results" style="display: none;">
+        No blog posts found matching your search.
+    </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('blog-search');
+    const blogList = document.getElementById('blog-list');
+    const noResults = document.getElementById('no-results');
+    const items = document.querySelectorAll('.searchable-item');
+    
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        let hasResults = false;
+        
+        items.forEach(item => {
+            const title = item.dataset.title;
+            const content = item.dataset.content;
+            
+            if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                item.style.display = 'block';
+                hasResults = true;
+            } else {
+                item.style.display = 'none';
+            }
+        });
+        
+        if (!hasResults && searchTerm) {
+            noResults.style.display = 'block';
+            blogList.style.display = 'none';
+        } else {
+            noResults.style.display = 'none';
+            blogList.style.display = 'block';
+        }
+    });
+});
+</script>
 {{ end }}
 
 {{ define "styles" }}

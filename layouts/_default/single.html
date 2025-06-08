@@ -1,0 +1,85 @@
+{{ define "title" }}{{ .Title }} | {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<article class="single-page">
+    <div class="page-header">
+        <h1>{{ .Title }}</h1>
+    </div>
+    
+    <div class="page-content">
+        {{ .Content }}
+    </div>
+</article>
+{{ end }}
+
+{{ define "styles" }}
+{{ $mainCSS := "css/main.css" | relURL }}
+<link rel="stylesheet" href="{{ $mainCSS }}">
+<style>
+    .single-page {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 5rem 2rem;
+    }
+    
+    .page-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    
+    .page-header h1 {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 300;
+        letter-spacing: -1px;
+    }
+    
+    .page-content {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--secondary-color);
+    }
+    
+    .page-content h2 {
+        font-size: 2rem;
+        margin: 2.5rem 0 1.5rem;
+        color: var(--primary-color);
+        font-weight: 300;
+    }
+    
+    .page-content h3 {
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem;
+        color: var(--primary-color);
+        font-weight: 400;
+    }
+    
+    .page-content p {
+        margin-bottom: 1.5rem;
+    }
+    
+    .page-content ul,
+    .page-content ol {
+        margin-bottom: 1.5rem;
+        padding-left: 2rem;
+    }
+    
+    .page-content li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .page-content strong {
+        font-weight: 600;
+        color: var(--primary-color);
+    }
+    
+    .page-content a {
+        color: var(--primary-color);
+        text-decoration: underline;
+        transition: opacity 0.3s ease;
+    }
+    
+    .page-content a:hover {
+        opacity: 0.7;
+    }
+</style>
+{{ end }}

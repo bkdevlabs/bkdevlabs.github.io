@@ -7,12 +7,16 @@
 </div>
 
 <div class="list-container">
-    <div class="products-grid">
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search products..." id="products-search">
+    </div>
+    
+    <div class="products-grid" id="products-list">
         {{ range .Pages }}
-        <div class="product-card">
+        <div class="product-card searchable-item" data-title="{{ .Title | lower }}" data-description="{{ .Params.description | default "" | lower }}" data-features="{{ if .Params.features }}{{ delimit .Params.features " " | lower }}{{ end }}">
             <div class="product-icon"></div>
             <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-            <p>{{ .Params.description }}</p>
+            <p>{{ .Params.description | default "No description available." }}</p>
             {{ if or .Params.github_link .Params.product_link }}
             <div class="project-links" style="margin-top: 1.5rem;">
                 {{ if .Params.product_link }}
@@ -26,5 +30,44 @@
         </div>
         {{ end }}
     </div>
+    
+    <div class="no-results" id="no-results" style="display: none;">
+        No products found matching your search.
+    </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('products-search');
+    const productsList = document.getElementById('products-list');
+    const noResults = document.getElementById('no-results');
+    const items = document.querySelectorAll('.searchable-item');
+    
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        let hasResults = false;
+        
+        items.forEach(item => {
+            const title = item.dataset.title;
+            const description = item.dataset.description;
+            const features = item.dataset.features || '';
+            
+            if (title.includes(searchTerm) || description.includes(searchTerm) || features.includes(searchTerm)) {
+                item.style.display = 'block';
+                hasResults = true;
+            } else {
+                item.style.display = 'none';
+            }
+        });
+        
+        if (!hasResults && searchTerm) {
+            noResults.style.display = 'block';
+            productsList.style.display = 'none';
+        } else {
+            noResults.style.display = 'none';
+            productsList.style.display = 'grid';
+        }
+    });
+});
+</script>
 {{ end }}

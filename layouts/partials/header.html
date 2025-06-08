@@ -1,0 +1,10 @@
+<nav>
+    <div class="nav-container">
+        <a href="{{ .Site.BaseURL }}" class="logo">BKDevLabs</a>
+        <ul class="nav-links">
+            {{ range .Site.Menus.main }}
+            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+            {{ end }}
+        </ul>
+    </div>
+</nav>

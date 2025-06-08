@@ -1,0 +1,30 @@
+{{ define "title" }}Products | {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<div class="list-header">
+    <h1>Our Products</h1>
+    <p>Powerful tools and solutions built by BKDevLabs</p>
+</div>
+
+<div class="list-container">
+    <div class="products-grid">
+        {{ range .Pages }}
+        <div class="product-card">
+            <div class="product-icon"></div>
+            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            <p>{{ .Params.description }}</p>
+            {{ if or .Params.github_link .Params.product_link }}
+            <div class="project-links" style="margin-top: 1.5rem;">
+                {{ if .Params.product_link }}
+                <a href="{{ .Params.product_link }}" class="read-more" target="_blank" rel="noopener">Try it →</a>
+                {{ end }}
+                {{ if .Params.github_link }}
+                <a href="{{ .Params.github_link }}" class="read-more" target="_blank" rel="noopener">GitHub →</a>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

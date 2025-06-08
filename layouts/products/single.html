@@ -1,0 +1,134 @@
+{{ define "title" }}{{ .Title }} | {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<article>
+    <div class="single-header">
+        <div class="product-icon" style="width: 80px; height: 80px; margin: 0 auto 2rem;"></div>
+        <h1>{{ .Title }}</h1>
+        <p class="project-description">{{ .Params.description }}</p>
+        
+        <div class="single-meta">
+            {{ if .Params.version }}
+            <div>
+                <strong>Version:</strong> {{ .Params.version }}
+            </div>
+            {{ end }}
+            {{ if .Params.status }}
+            <div>
+                <strong>Status:</strong> {{ .Params.status }}
+            </div>
+            {{ end }}
+            {{ if .Params.pricing }}
+            <div>
+                <strong>Pricing:</strong> {{ .Params.pricing }}
+            </div>
+            {{ end }}
+        </div>
+
+        {{ if .Params.features }}
+        <div style="margin-top: 2rem;">
+            <h3 style="margin-bottom: 1rem;">Key Features</h3>
+            <div class="tech-grid">
+                {{ range .Params.features }}
+                <span class="tech-tag">{{ . }}</span>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+
+        <div class="project-links">
+            {{ if .Params.product_link }}
+            <a href="{{ .Params.product_link }}" class="project-link" target="_blank" rel="noopener">
+                Try {{ .Title }}
+            </a>
+            {{ end }}
+            {{ if .Params.github_link }}
+            <a href="{{ .Params.github_link }}" class="project-link secondary" target="_blank" rel="noopener">
+                View on GitHub
+            </a>
+            {{ end }}
+            {{ if .Params.documentation_link }}
+            <a href="{{ .Params.documentation_link }}" class="project-link secondary" target="_blank" rel="noopener">
+                Documentation
+            </a>
+            {{ end }}
+        </div>
+    </div>
+
+    <div class="single-content">
+        {{ .Content }}
+        
+        <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+            <a href="/products/" class="back-link">← Back to Products</a>
+        </div>
+    </div>
+</article>
+{{ end }}
+
+{{ define "styles" }}
+{{ $mainCSS := "css/main.css" | relURL }}
+<link rel="stylesheet" href="{{ $mainCSS }}">
+<style>
+    .project-description {
+        font-size: 1.25rem;
+        color: var(--accent-color);
+        margin-top: 1rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .single-content h2 {
+        font-size: 2rem;
+        margin: 2.5rem 0 1.5rem;
+        color: var(--primary-color);
+    }
+    
+    .single-content h3 {
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem;
+        color: var(--primary-color);
+    }
+    
+    .single-content p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+    }
+    
+    .single-content ul,
+    .single-content ol {
+        margin-bottom: 1.5rem;
+        padding-left: 2rem;
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+    
+    .single-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 2rem 0;
+    }
+    
+    .single-content code {
+        background-color: var(--light-gray);
+        padding: 0.2rem 0.4rem;
+        border-radius: 3px;
+        font-size: 0.9em;
+    }
+    
+    .single-content pre {
+        background-color: var(--light-gray);
+        padding: 1.5rem;
+        border-radius: 5px;
+        overflow-x: auto;
+        margin-bottom: 1.5rem;
+    }
+    
+    .single-content pre code {
+        background: none;
+        padding: 0;
+    }
+</style>
+{{ end }}

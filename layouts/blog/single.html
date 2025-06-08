@@ -1,0 +1,121 @@
+{{ define "title" }}{{ .Title }} | {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<article class="blog-article">
+    <div class="blog-container">
+        <header class="blog-header">
+            <h1>{{ .Title }}</h1>
+            <div class="blog-meta">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                <span class="separator">•</span>
+                <span>{{ .ReadingTime }} min read</span>
+            </div>
+        </header>
+        
+        <div class="blog-content">
+            {{ .Content }}
+        </div>
+        
+        <footer class="blog-footer">
+            <a href="/blog/" class="back-link">← Back to Blog</a>
+        </footer>
+    </div>
+</article>
+{{ end }}
+
+{{ define "styles" }}
+{{ $mainCSS := "css/main.css" | relURL }}
+<link rel="stylesheet" href="{{ $mainCSS }}">
+<style>
+    .blog-article {
+        padding: 5rem 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .blog-header {
+        margin-bottom: 3rem;
+    }
+    
+    .blog-header h1 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 1rem;
+    }
+    
+    .blog-meta {
+        color: var(--accent-color);
+        font-size: 0.95rem;
+    }
+    
+    .separator {
+        margin: 0 0.5rem;
+    }
+    
+    .blog-content {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--secondary-color);
+    }
+    
+    .blog-content h2 {
+        font-size: 1.75rem;
+        margin: 2rem 0 1rem;
+    }
+    
+    .blog-content h3 {
+        font-size: 1.4rem;
+        margin: 1.5rem 0 0.75rem;
+    }
+    
+    .blog-content p {
+        margin-bottom: 1.5rem;
+    }
+    
+    .blog-content ul,
+    .blog-content ol {
+        margin-bottom: 1.5rem;
+        padding-left: 2rem;
+    }
+    
+    .blog-content li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .blog-content code {
+        background-color: var(--light-gray);
+        padding: 0.2rem 0.4rem;
+        border-radius: 3px;
+        font-size: 0.9em;
+    }
+    
+    .blog-content pre {
+        background-color: var(--light-gray);
+        padding: 1.5rem;
+        border-radius: 5px;
+        overflow-x: auto;
+        margin-bottom: 1.5rem;
+    }
+    
+    .blog-content pre code {
+        background: none;
+        padding: 0;
+    }
+    
+    .blog-footer {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .back-link {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: opacity 0.3s ease;
+    }
+    
+    .back-link:hover {
+        opacity: 0.7;
+    }
+</style>
+{{ end }}

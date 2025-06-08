@@ -1,0 +1,34 @@
+{{ define "title" }}Our Work | {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<div class="list-header">
+    <h1>Our Work</h1>
+    <p>Explore our portfolio of successful projects and case studies</p>
+</div>
+
+<div class="list-container">
+    <div class="work-grid">
+        {{ range .Pages }}
+        <div class="work-item">
+            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            <p>{{ .Params.description }}</p>
+            <div class="work-tags">
+                {{ range .Params.technologies }}
+                <span class="tag">{{ . }}</span>
+                {{ end }}
+            </div>
+            {{ if or .Params.github_link .Params.project_link }}
+            <div class="project-links" style="margin-top: 1rem;">
+                {{ if .Params.project_link }}
+                <a href="{{ .Params.project_link }}" class="read-more" target="_blank" rel="noopener">View Project →</a>
+                {{ end }}
+                {{ if .Params.github_link }}
+                <a href="{{ .Params.github_link }}" class="read-more" target="_blank" rel="noopener">GitHub →</a>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

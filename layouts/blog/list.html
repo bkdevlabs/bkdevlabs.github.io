@@ -1,0 +1,73 @@
+{{ define "title" }}Blog | {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<div class="list-header">
+    <h1>Blog</h1>
+    <p>Insights, tutorials, and thoughts on web development</p>
+</div>
+
+<div class="list-container">
+    <div class="blog-list">
+        {{ range .Pages }}
+        <article class="blog-list-item">
+            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+            <div class="blog-meta">
+                <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+                <span class="separator">•</span>
+                <span>{{ .ReadingTime }} min read</span>
+            </div>
+            <p class="blog-excerpt">{{ .Summary }}</p>
+            <a href="{{ .Permalink }}" class="read-more">Read more →</a>
+        </article>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
+
+{{ define "styles" }}
+{{ $mainCSS := "css/main.css" | relURL }}
+<link rel="stylesheet" href="{{ $mainCSS }}">
+<style>
+    .blog-list {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    .blog-list-item {
+        padding-bottom: 3rem;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .blog-list-item:last-child {
+        border-bottom: none;
+    }
+    
+    .blog-list-item h2 {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.3;
+    }
+    
+    .blog-list-item h2 a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .blog-list-item h2 a:hover {
+        color: var(--accent-color);
+    }
+    
+    .blog-excerpt {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--secondary-color);
+        margin: 1rem 0;
+    }
+    
+    .separator {
+        margin: 0 0.5rem;
+    }
+</style>
+{{ end }}

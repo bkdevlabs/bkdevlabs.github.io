@@ -1,0 +1,105 @@
+{{ define "title" }}{{ .Title }} | {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<article>
+    <div class="single-header">
+        <h1>{{ .Title }}</h1>
+        <p class="project-description">{{ .Params.description }}</p>
+        
+        <div class="single-meta">
+            {{ if .Params.client }}
+            <div>
+                <strong>Client:</strong> {{ .Params.client }}
+            </div>
+            {{ end }}
+            {{ if .Params.date }}
+            <div>
+                <strong>Completed:</strong> {{ .Date.Format "January 2006" }}
+            </div>
+            {{ end }}
+            {{ if .Params.duration }}
+            <div>
+                <strong>Duration:</strong> {{ .Params.duration }}
+            </div>
+            {{ end }}
+        </div>
+
+        {{ if .Params.technologies }}
+        <div class="tech-grid">
+            {{ range .Params.technologies }}
+            <span class="tech-tag">{{ . }}</span>
+            {{ end }}
+        </div>
+        {{ end }}
+
+        <div class="project-links">
+            {{ if .Params.project_link }}
+            <a href="{{ .Params.project_link }}" class="project-link" target="_blank" rel="noopener">
+                View Live Project
+            </a>
+            {{ end }}
+            {{ if .Params.github_link }}
+            <a href="{{ .Params.github_link }}" class="project-link secondary" target="_blank" rel="noopener">
+                View on GitHub
+            </a>
+            {{ end }}
+        </div>
+    </div>
+
+    <div class="single-content">
+        {{ .Content }}
+        
+        <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-color);">
+            <a href="/work/" class="back-link">← Back to Our Work</a>
+        </div>
+    </div>
+</article>
+{{ end }}
+
+{{ define "styles" }}
+{{ $mainCSS := "css/main.css" | relURL }}
+<link rel="stylesheet" href="{{ $mainCSS }}">
+<style>
+    .project-description {
+        font-size: 1.25rem;
+        color: var(--accent-color);
+        margin-top: 1rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .single-content h2 {
+        font-size: 2rem;
+        margin: 2.5rem 0 1.5rem;
+        color: var(--primary-color);
+    }
+    
+    .single-content h3 {
+        font-size: 1.5rem;
+        margin: 2rem 0 1rem;
+        color: var(--primary-color);
+    }
+    
+    .single-content p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+    }
+    
+    .single-content ul,
+    .single-content ol {
+        margin-bottom: 1.5rem;
+        padding-left: 2rem;
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+    
+    .single-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 2rem 0;
+    }
+</style>
+{{ end }}

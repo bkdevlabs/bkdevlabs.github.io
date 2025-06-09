@@ -1,0 +1,27 @@
+# Hugo default output directory
+/public/
+/resources/_gen/
+
+# Temporary lock file while building
+.hugo_build.lock
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Node (if you use any npm packages)
+node_modules/
+package-lock.json

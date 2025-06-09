@@ -1,7 +1,6 @@
 baseURL = "https://bkdevlabs.com/"
 languageCode = "en-us"
 title = "BKDevLabs - Digital Web Development Agency"
-theme = ""
 
 [params]
   description = "A boutique digital web development agency focused on turning your vision into elegant, high-performance web solutions."

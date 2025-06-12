@@ -11,6 +11,7 @@ features: ["Instant Publishing", "Interactive Learning", "Analytics & Insights",
 github_link: ""
 product_link: ""
 documentation_link: ""
+icon: "/assets/images/icons/tutorialdev.svg"
 ---
 
 **The premier hosting platform for interactive tutorials, powered by tutorial.js CMS.**

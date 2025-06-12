@@ -11,6 +11,7 @@ features: ["Intuitive Drag-and-Drop Editor", "Export as PNG", "Embed as code", "
 github_link: "https://github.com/bkdevlabs/flowchart.dev"
 product_link: "https://flowchart.dev/"
 documentation_link: "https://github.com/bkdevlabs/flowchart.dev/blob/main/README.md"
+icon: "/assets/images/icons/flowchartdev.svg"
 ---
 
 ## Flowchart.dev

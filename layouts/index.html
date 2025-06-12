@@ -111,7 +111,11 @@
             {{ end }}
             {{ range $displayProducts }}
             <div class="product-card">
-                <div class="product-icon"></div>
+            {{ if .Params.icon }}
+            <img src="{{ .Params.icon }}" alt="{{ .Title }} icon" class="product-icon-svg" width="80" height="80" loading="lazy" />
+            {{ else }}
+            <div class="product-icon"></div>
+            {{ end }}
                 <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
                 <p>{{ .Params.description | default "No description available." }}</p>
             </div>

@@ -11,6 +11,7 @@ features: ["Content Management", "Interactive Guides", "Organization and Discove
 github_link: ""
 product_link: ""
 documentation_link: ""
+icon: "/assets/images/icons/tutorialjs.svg"
 ---
 
 **A modern, Node.js-powered content management system designed specifically for creating and hosting interactive tutorials.**

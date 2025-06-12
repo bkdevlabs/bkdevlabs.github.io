@@ -1,0 +1,16 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main nodes -->
+  <rect x="10" y="10" width="20" height="20" rx="4" fill="#1a2238"/>
+  <rect x="50" y="10" width="20" height="20" rx="4" fill="#9ba4b5"/>
+  <rect x="30" y="50" width="20" height="20" rx="4" fill="#394867"/>
+  <!-- Connectors -->
+  <line x1="30" y1="20" x2="50" y2="20" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="20" y1="30" x2="40" y2="50" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="60" y1="30" x2="50" y2="50" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- Arrowhead definition -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L6,4 L2,6" fill="none" stroke="#666" stroke-width="2"/>
+    </marker>
+  </defs>
+</svg>

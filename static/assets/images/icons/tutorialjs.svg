@@ -1,0 +1,7 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Book background -->
+  <rect x="14" y="18" width="52" height="44" rx="7" fill="#1a2238"/>
+  <rect x="20" y="24" width="40" height="32" rx="4" fill="#fff"/>
+  <!-- JS code brackets for "js" -->
+  <text x="30" y="45" font-size="18" font-family="monospace" fill="#394867" font-weight="bold">{}</text>
+</svg>

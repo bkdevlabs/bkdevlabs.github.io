@@ -14,7 +14,11 @@
     <div class="products-grid" id="products-list">
         {{ range .Pages }}
         <div class="product-card searchable-item" data-title="{{ .Title | lower }}" data-description="{{ .Params.description | default "" | lower }}" data-features="{{ if .Params.features }}{{ delimit .Params.features " " | lower }}{{ end }}">
-            <div class="product-icon"></div>
+        {{ if .Params.icon }}
+        <img src="{{ .Params.icon }}" alt="{{ .Title }} icon" class="product-icon-svg" width="80" height="80" loading="lazy" />
+        {{ else }}
+        <div class="product-icon"></div>
+        {{ end }}
             <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
             <p>{{ .Params.description | default "No description available." }}</p>
             {{ if or .Params.github_link .Params.product_link }}

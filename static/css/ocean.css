@@ -1,0 +1,620 @@
+/* =========================
+   Ocean Theme Variables
+   ========================= */
+:root {
+    /* Ocean Environment Colors */
+    --ocean-sky-blue: #87CEEB;
+    --ocean-light-blue: #98D8E8;
+    --ocean-powder-blue: #B0E0E6;
+    --ocean-alice-blue: #F0F8FF;
+    --ocean-alice-blue-alt: #F8F8FF;
+    
+    /* Sun Colors */
+    --sun-gold: #FFD700;
+    --sun-orange: #FFA500;
+    --sun-glow: rgba(255, 215, 0, 0.4);
+    --sun-glow-bright: rgba(255, 215, 0, 0.6);
+    --sun-orange-fade: rgba(255, 165, 0, 0.3);
+    
+    /* Wave Colors */
+    --wave-light-blue: rgba(30, 144, 255, 0.1);
+    --wave-royal-blue: rgba(65, 105, 225, 0.2);
+    --wave-deep-blue: rgba(30, 144, 255, 0.2);
+    --wave-navy: rgba(25, 25, 112, 0.4);
+    --wave-steel-blue: rgba(70, 130, 180, 0.15);
+    --wave-cornflower: rgba(100, 149, 237, 0.3);
+    --wave-sky-blue: rgba(135, 206, 250, 0.1);
+    --wave-light-steel: rgba(176, 196, 222, 0.25);
+    
+    /* Bubble Colors */
+    --bubble-white: rgba(255, 255, 255, 0.8);
+    --bubble-light-blue: rgba(173, 216, 230, 0.6);
+    
+    /* Navigation Colors */
+    --nav-sky-blue: rgba(135, 206, 235, 0.95);
+    --nav-light-blue: rgba(152, 216, 232, 0.9);
+    --nav-border: rgba(176, 224, 230, 0.3);
+    --nav-shadow: rgba(30, 144, 255, 0.1);
+    --nav-logo-blue: rgba(25, 25, 112, 0.9);
+    --nav-link-steel: rgba(70, 130, 180, 0.8);
+    --nav-link-navy: rgba(25, 25, 112, 1);
+    --nav-text-shadow: rgba(255, 255, 255, 0.3);
+    --nav-text-shadow-hover: rgba(255, 255, 255, 0.4);
+    --nav-text-shadow-light: rgba(255, 255, 255, 0.2);
+    
+    /* Product Card Colors */
+    --card-alice-blue: rgba(240, 248, 255, 0.9);
+    --card-powder-blue: rgba(176, 224, 230, 0.8);
+    --card-light-blue: rgba(173, 216, 230, 0.9);
+    --card-border: rgba(100, 149, 237, 0.2);
+    --card-shadow: rgba(30, 144, 255, 0.1);
+    --card-shadow-hover: rgba(30, 144, 255, 0.2);
+    --card-inset-light: rgba(255, 255, 255, 0.4);
+    --card-inset-light-hover: rgba(255, 255, 255, 0.6);
+    --card-accent-blue: rgba(30, 144, 255, 0.6);
+    --card-accent-royal: rgba(65, 105, 225, 0.8);
+    --card-alice-blue-hover: rgba(240, 248, 255, 0.95);
+    --card-powder-blue-hover: rgba(176, 224, 230, 0.85);
+    --card-light-blue-hover: rgba(173, 216, 230, 0.95);
+    --card-text-navy: rgba(25, 25, 112, 0.9);
+    --card-text-steel: rgba(70, 130, 180, 0.8);
+    
+    /* Icon Colors */
+    --icon-blue: rgba(30, 144, 255, 0.8);
+    --icon-royal-blue: rgba(65, 105, 225, 0.9);
+    --icon-shadow: rgba(30, 144, 255, 0.3);
+    --icon-highlight: rgba(255, 255, 255, 0.4);
+    --icon-drop-shadow: rgba(30, 144, 255, 0.2);
+    
+    /* Work/Blog Item Colors */
+    --item-bg-light: rgba(248, 248, 255, 0.9);
+    --item-bg-medium: rgba(240, 248, 255, 0.8);
+    --item-bg-light-hover: rgba(248, 248, 255, 0.95);
+    --item-bg-medium-hover: rgba(240, 248, 255, 0.9);
+    --item-shadow-light: rgba(30, 144, 255, 0.08);
+    --item-shadow-hover: rgba(30, 144, 255, 0.15);
+    --item-border-alt: rgba(176, 224, 230, 0.3);
+    --item-shadow-blog: rgba(30, 144, 255, 0.05);
+    --item-shadow-blog-hover: rgba(30, 144, 255, 0.1);
+    --item-bg-blog-even: rgba(176, 224, 230, 0.7);
+    
+    /* Search Input Colors */
+    --search-bg-white: rgba(255, 255, 255, 0.9);
+    --search-bg-blue: rgba(240, 248, 255, 0.8);
+    --search-border: rgba(100, 149, 237, 0.3);
+    --search-border-focus: rgba(30, 144, 255, 0.6);
+    --search-text: rgba(25, 25, 112, 0.9);
+    --search-placeholder: rgba(70, 130, 180, 0.6);
+    --search-shadow: rgba(30, 144, 255, 0.08);
+    --search-focus-ring: rgba(30, 144, 255, 0.1);
+    --search-focus-shadow: rgba(30, 144, 255, 0.15);
+    
+    /* Animation Values */
+    --bubble-opacity-low: 0.5;
+    --bubble-opacity-medium: 0.7;
+    --bubble-opacity-high: 0.9;
+    --wave-opacity-low: 0.4;
+    --wave-opacity-medium: 0.6;
+    --wave-opacity-high: 0.8;
+    
+    /* Size Variables */
+    --sun-size: 80px;
+    --sun-size-mobile: 60px;
+    --bubble-size-small: 4px;
+    --bubble-size-medium: 6px;
+    --bubble-size-large: 8px;
+    --bubble-size-xl: 10px;
+    --wave-height-small: 40px;
+    --wave-height-medium: 60px;
+    --wave-height-large: 80px;
+}
+
+/* =========================
+   Ocean Environment Effect
+   ========================= */
+
+.environment-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(180deg, 
+        var(--ocean-sky-blue) 0%,
+        var(--ocean-light-blue) 30%,
+        var(--ocean-powder-blue) 60%,
+        var(--ocean-alice-blue) 100%
+    );
+}
+
+/* Sun */
+.environment-container::before {
+    content: '';
+    position: absolute;
+    top: 8%;
+    right: 15%;
+    width: var(--sun-size);
+    height: var(--sun-size);
+    background: radial-gradient(circle, 
+        var(--sun-gold) 0%,
+        var(--sun-orange) 70%,
+        var(--sun-orange-fade) 100%
+    );
+    border-radius: 50%;
+    box-shadow: 0 0 60px var(--sun-glow);
+    animation: sun-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes sun-glow {
+    0% {
+        box-shadow: 0 0 60px var(--sun-glow);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow: 0 0 80px var(--sun-glow-bright);
+        transform: scale(1.05);
+    }
+}
+
+/* Ocean Waves */
+.environment-element {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--wave-height-medium);
+    background: linear-gradient(180deg, 
+        var(--wave-light-blue) 0%, 
+        var(--wave-royal-blue) 100%);
+    opacity: var(--wave-opacity-medium);
+}
+
+.environment-element:nth-child(1) {
+    animation: ocean-wave-1 8s ease-in-out infinite;
+    border-radius: 50% 50% 0 0;
+    height: var(--wave-height-large);
+    background: linear-gradient(180deg, 
+        var(--wave-deep-blue) 0%, 
+        var(--wave-navy) 100%);
+    opacity: var(--wave-opacity-high);
+}
+
+.environment-element:nth-child(2) {
+    animation: ocean-wave-2 10s ease-in-out infinite;
+    border-radius: 60% 40% 0 0;
+    height: var(--wave-height-medium);
+    background: linear-gradient(180deg, 
+        var(--wave-steel-blue) 0%, 
+        var(--wave-cornflower) 100%);
+    opacity: var(--wave-opacity-medium);
+    animation-delay: -2s;
+}
+
+.environment-element:nth-child(3) {
+    animation: ocean-wave-3 12s ease-in-out infinite;
+    border-radius: 40% 60% 0 0;
+    height: var(--wave-height-small);
+    background: linear-gradient(180deg, 
+        var(--wave-sky-blue) 0%, 
+        var(--wave-light-steel) 100%);
+    opacity: var(--wave-opacity-low);
+    animation-delay: -4s;
+}
+
+@keyframes ocean-wave-1 {
+    0%, 100% {
+        transform: translateX(-50%) scaleX(1);
+        border-radius: 50% 50% 0 0;
+    }
+    25% {
+        transform: translateX(-45%) scaleX(1.05);
+        border-radius: 60% 40% 0 0;
+    }
+    50% {
+        transform: translateX(-55%) scaleX(1.1);
+        border-radius: 40% 60% 0 0;
+    }
+    75% {
+        transform: translateX(-48%) scaleX(1.03);
+        border-radius: 55% 45% 0 0;
+    }
+}
+
+@keyframes ocean-wave-2 {
+    0%, 100% {
+        transform: translateX(-40%) scaleX(1);
+        border-radius: 60% 40% 0 0;
+    }
+    33% {
+        transform: translateX(-60%) scaleX(1.08);
+        border-radius: 35% 65% 0 0;
+    }
+    66% {
+        transform: translateX(-30%) scaleX(1.05);
+        border-radius: 70% 30% 0 0;
+    }
+}
+
+@keyframes ocean-wave-3 {
+    0%, 100% {
+        transform: translateX(-60%) scaleX(1);
+        border-radius: 40% 60% 0 0;
+    }
+    50% {
+        transform: translateX(-35%) scaleX(1.12);
+        border-radius: 65% 35% 0 0;
+    }
+}
+
+/* Floating bubbles */
+.environment-accent {
+    position: absolute;
+    width: var(--bubble-size-large);
+    height: var(--bubble-size-large);
+    background: radial-gradient(circle, 
+        var(--bubble-white) 0%, 
+        var(--bubble-light-blue) 50%, 
+        transparent 100%);
+    border-radius: 50%;
+    opacity: var(--bubble-opacity-medium);
+    animation: bubble-float 6s ease-in-out infinite;
+}
+
+.environment-accent:nth-child(4) {
+    left: 20%;
+    bottom: 120px;
+    animation-delay: 0s;
+    width: var(--bubble-size-medium);
+    height: var(--bubble-size-medium);
+}
+
+.environment-accent:nth-child(5) {
+    left: 60%;
+    bottom: 140px;
+    animation-delay: 2s;
+    width: var(--bubble-size-xl);
+    height: var(--bubble-size-xl);
+}
+
+.environment-accent:nth-child(6) {
+    left: 85%;
+    bottom: 100px;
+    animation-delay: 4s;
+    width: var(--bubble-size-small);
+    height: var(--bubble-size-small);
+}
+
+@keyframes bubble-float {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+        opacity: var(--bubble-opacity-medium);
+    }
+    25% {
+        transform: translateY(-20px) scale(1.1);
+        opacity: var(--bubble-opacity-high);
+    }
+    50% {
+        transform: translateY(-35px) scale(0.9);
+        opacity: var(--bubble-opacity-low);
+    }
+    75% {
+        transform: translateY(-15px) scale(1.05);
+        opacity: var(--wave-opacity-high);
+    }
+}
+
+/* =========================
+   Navigation - Ocean Theme
+   ========================= */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(180deg, 
+        var(--nav-sky-blue) 0%,
+        var(--nav-light-blue) 100%
+    );
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--nav-border);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 20px var(--nav-shadow);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-xxl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--nav-logo-blue);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    text-shadow: 0 1px 3px var(--nav-text-shadow);
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--spacing-xxxl);
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--nav-link-steel);
+    font-weight: var(--font-weight-normal);
+    transition: all 0.3s ease;
+    font-size: var(--font-size-sm);
+    text-shadow: 0 1px 2px var(--nav-text-shadow-light);
+}
+
+.nav-links a:hover {
+    color: var(--nav-link-navy);
+    text-shadow: 0 2px 4px var(--nav-text-shadow-hover);
+}
+
+/* =========================
+   Products Section - Ocean Theme
+   ========================= */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xxxl);
+}
+
+.product-card {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, 
+        var(--card-alice-blue) 0%,
+        var(--card-powder-blue) 50%,
+        var(--card-light-blue) 100%
+    );
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: 
+        0 4px 20px var(--card-shadow),
+        inset 0 1px 0 var(--card-inset-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--card-accent-blue) 0%,
+        var(--card-accent-royal) 50%,
+        var(--card-accent-blue) 100%
+    );
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+        0 8px 30px var(--card-shadow-hover),
+        inset 0 1px 0 var(--card-inset-light-hover);
+    background: linear-gradient(135deg, 
+        var(--card-alice-blue-hover) 0%,
+        var(--card-powder-blue-hover) 50%,
+        var(--card-light-blue-hover) 100%
+    );
+}
+
+.product-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xl);
+    color: var(--card-text-navy);
+    font-weight: var(--font-weight-medium);
+    text-shadow: 0 1px 2px var(--nav-text-shadow);
+}
+
+.product-card p {
+    color: var(--card-text-steel);
+    line-height: 1.6;
+}
+
+/* Ocean-themed product icons */
+.product-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto var(--spacing-xl);
+    background: linear-gradient(135deg, 
+        var(--icon-blue) 0%,
+        var(--icon-royal-blue) 100%
+    );
+    border-radius: 50%;
+    box-shadow: 
+        0 4px 15px var(--icon-shadow),
+        inset 0 2px 4px var(--nav-text-shadow);
+    position: relative;
+}
+
+.product-icon::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(circle, 
+        var(--icon-highlight) 0%,
+        transparent 70%
+    );
+    border-radius: 50%;
+}
+
+.product-icon-svg {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 0 auto var(--spacing-xl);
+    background: none;
+    border-radius: 0;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px var(--icon-drop-shadow));
+}
+
+.single-header .product-icon {
+    width: 80px;
+    height: 80px;
+}
+
+.single-header .product-icon-svg {
+    width: 80px;
+    height: 80px;
+}
+
+/* =========================
+   Work Cards - Ocean Theme Integration
+   ========================= */
+.work-item {
+    border: 1px solid var(--card-border);
+    padding: var(--spacing-xxl);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: linear-gradient(135deg, 
+        var(--item-bg-light) 0%,
+        var(--item-bg-medium) 100%
+    );
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 15px var(--item-shadow-light);
+    border-radius: var(--radius-sm);
+}
+
+.work-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--item-shadow-hover);
+    background: linear-gradient(135deg, 
+        var(--item-bg-light-hover) 0%,
+        var(--item-bg-medium-hover) 100%
+    );
+}
+
+.work-item h3 {
+    color: var(--card-text-navy);
+    text-shadow: 0 1px 2px var(--nav-text-shadow);
+}
+
+/* =========================
+   Blog Cards - Ocean Theme Integration
+   ========================= */
+.blog-list-item {
+    border-bottom: 1px solid var(--item-border-alt);
+    padding: var(--spacing-xxl);
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, 
+        var(--item-bg-light) 0%,
+        var(--item-bg-medium) 100%
+    );
+    backdrop-filter: blur(5px);
+    box-shadow: 0 1px 10px var(--item-shadow-blog);
+}
+
+.blog-list-item:nth-child(even) {
+    background: linear-gradient(135deg, 
+        var(--card-alice-blue) 0%,
+        var(--item-bg-blog-even) 100%
+    );
+}
+
+.blog-list-item:hover {
+    background: linear-gradient(135deg, 
+        var(--item-bg-light-hover) 0%,
+        var(--item-bg-medium-hover) 100%
+    );
+    box-shadow: 0 4px 20px var(--item-shadow-blog-hover);
+}
+
+/* =========================
+   Search Box - Ocean Theme
+   ========================= */
+.search-input {
+    width: 100%;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    font-size: var(--font-size-base);
+    border: 1px solid var(--search-border);
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, 
+        var(--search-bg-white) 0%,
+        var(--search-bg-blue) 100%
+    );
+    backdrop-filter: blur(5px);
+    color: var(--search-text);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px var(--search-shadow);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--search-border-focus);
+    box-shadow: 
+        0 0 0 3px var(--search-focus-ring),
+        0 4px 15px var(--search-focus-shadow);
+}
+
+.search-input::placeholder {
+    color: var(--search-placeholder);
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .environment-container::before {
+        width: var(--sun-size-mobile);
+        height: var(--sun-size-mobile);
+        top: 5%;
+        right: 10%;
+    }
+    
+    .environment-element {
+        height: var(--wave-height-small);
+    }
+    
+    .environment-element:nth-child(1) {
+        height: var(--wave-height-medium);
+    }
+    
+    .environment-element:nth-child(2) {
+        height: 45px;
+    }
+    
+    .environment-element:nth-child(3) {
+        height: 30px;
+    }
+    
+    .environment-accent {
+        width: var(--bubble-size-medium);
+        height: var(--bubble-size-medium);
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .environment-container {
+        background: linear-gradient(180deg, 
+            var(--ocean-alice-blue) 0%,
+            var(--ocean-alice-blue-alt) 100%
+        );
+    }
+    
+    .environment-container::before,
+    .environment-element,
+    .environment-accent {
+        animation: none;
+    }
+}

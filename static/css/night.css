@@ -1,0 +1,786 @@
+/* =========================
+   Night Theme Variables
+   ========================= */
+:root {
+    /* Night Environment Colors - More Classy and Muted */
+    --night-deep-blue: #0A0B1E;
+    --night-dark-blue: #1B1B3A;
+    --night-medium-blue: #2C2C54;
+    --night-light-blue: #40407A;
+    --night-purple: #2C1810;
+    --night-indigo: #1A1A2E;
+    
+    /* Moon Colors - More Visible */
+    --moon-white: #F5F5F5;
+    --moon-silver: #E8E8E8;
+    --moon-glow: rgba(245, 245, 245, 0.4);
+    --moon-glow-bright: rgba(245, 245, 245, 0.6);
+    --moon-crater: rgba(200, 200, 200, 0.6);
+    --moon-crater-dark: rgba(150, 150, 150, 0.7);
+    
+    /* Star Colors - More Subtle */
+    --star-white: rgba(255, 255, 255, 0.8);
+    --star-blue: rgba(173, 216, 230, 0.7);
+    --star-yellow: rgba(255, 255, 224, 0.8);
+    --star-twinkle: rgba(255, 255, 255, 0.5);
+    
+    /* Cloud Colors - More Muted */
+    --cloud-dark: rgba(60, 60, 80, 0.5);
+    --cloud-medium: rgba(80, 80, 100, 0.3);
+    --cloud-light: rgba(100, 100, 120, 0.2);
+    
+    /* Navigation Colors - Night Theme */
+    --nav-night-dark: rgba(26, 27, 58, 0.95);
+    --nav-night-medium: rgba(44, 44, 84, 0.9);
+    --nav-border-night: rgba(100, 100, 120, 0.3);
+    --nav-shadow-night: rgba(10, 11, 30, 0.3);
+    --nav-logo-night: rgba(245, 245, 245, 0.95);
+    --nav-link-night: rgba(200, 200, 220, 0.9);
+    --nav-link-night-hover: rgba(245, 245, 245, 1);
+    
+    /* Card Colors - Night Theme */
+    --card-night-dark: rgba(26, 27, 58, 0.9);
+    --card-night-medium: rgba(44, 44, 84, 0.8);
+    --card-night-light: rgba(64, 64, 122, 0.9);
+    --card-border-night: rgba(100, 100, 120, 0.3);
+    --card-shadow-night: rgba(10, 11, 30, 0.2);
+    --card-shadow-night-hover: rgba(10, 11, 30, 0.35);
+    --card-accent-night: rgba(80, 80, 140, 0.7);
+    --card-accent-night-bright: rgba(100, 100, 160, 0.8);
+    --card-text-light: rgba(245, 245, 245, 0.95);
+    --card-text-medium: rgba(200, 200, 220, 0.85);
+    
+    /* Text Colors for Better Contrast */
+    --text-primary-night: rgba(245, 245, 245, 0.95);
+    --text-secondary-night: rgba(200, 200, 220, 0.9);
+    --text-accent-night: rgba(180, 180, 200, 0.8);
+    --text-muted-night: rgba(160, 160, 180, 0.7);
+    
+    /* Size Variables */
+    --moon-size: 85px;
+    --moon-size-mobile: 65px;
+    --star-size-small: 2px;
+    --star-size-medium: 3px;
+    --star-size-large: 4px;
+    --cloud-height-small: 40px;
+    --cloud-height-medium: 60px;
+    --cloud-height-large: 80px;
+}
+
+/* =========================
+   Night Environment Effect
+   ========================= */
+
+.environment-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(180deg, 
+        var(--night-deep-blue) 0%,
+        var(--night-dark-blue) 40%,
+        var(--night-medium-blue) 70%,
+        var(--night-light-blue) 100%
+    );
+}
+
+/* Moon with better visibility and craters */
+.environment-container::before {
+    content: '';
+    position: absolute;
+    top: 8%;
+    right: 15%;
+    width: var(--moon-size);
+    height: var(--moon-size);
+    background: radial-gradient(circle at 35% 25%, 
+        var(--moon-white) 0%,
+        var(--moon-silver) 60%,
+        rgba(220, 220, 220, 0.9) 100%
+    );
+    border-radius: 50%;
+    box-shadow: 
+        0 0 60px var(--moon-glow),
+        0 0 100px rgba(245, 245, 245, 0.2),
+        inset -8px -8px 15px var(--moon-crater),
+        inset 5px 5px 12px rgba(255, 255, 255, 0.4);
+    animation: moon-glow 8s ease-in-out infinite alternate;
+}
+
+/* Moon craters - more visible */
+.environment-container::after {
+    content: '';
+    position: absolute;
+    top: 9.5%;
+    right: 16.8%;
+    width: 12px;
+    height: 12px;
+    background: var(--moon-crater-dark);
+    border-radius: 50%;
+    box-shadow: 
+        18px 12px 0 4px var(--moon-crater),
+        -10px 25px 0 3px var(--moon-crater-dark),
+        25px -6px 0 2px var(--moon-crater),
+        -5px -8px 0 1px var(--moon-crater-dark),
+        35px 20px 0 2px var(--moon-crater);
+    opacity: 0.8;
+    animation: moon-glow 8s ease-in-out infinite alternate;
+}
+
+@keyframes moon-glow {
+    0% {
+        box-shadow: 0 0 60px var(--moon-glow), 0 0 100px rgba(245, 245, 245, 0.2);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow: 0 0 90px var(--moon-glow-bright), 0 0 140px rgba(245, 245, 245, 0.3);
+        transform: scale(1.03);
+    }
+}
+
+/* Drifting clouds - more subtle */
+.environment-element {
+    position: absolute;
+    bottom: 60%;
+    left: 0;
+    width: 100%;
+    height: var(--cloud-height-medium);
+    background: linear-gradient(180deg, 
+        var(--cloud-light) 0%, 
+        var(--cloud-medium) 50%,
+        var(--cloud-dark) 100%);
+    opacity: 0.25;
+    border-radius: 50px;
+}
+
+.environment-element:nth-child(1) {
+    animation: cloud-drift-1 30s linear infinite;
+    height: var(--cloud-height-large);
+    bottom: 70%;
+    background: radial-gradient(ellipse, 
+        var(--cloud-medium) 0%, 
+        var(--cloud-dark) 60%,
+        transparent 100%);
+    opacity: 0.3;
+}
+
+.environment-element:nth-child(2) {
+    animation: cloud-drift-2 35s linear infinite;
+    height: var(--cloud-height-medium);
+    bottom: 65%;
+    background: radial-gradient(ellipse, 
+        var(--cloud-light) 0%, 
+        var(--cloud-medium) 50%,
+        transparent 100%);
+    opacity: 0.2;
+    animation-delay: -12s;
+}
+
+.environment-element:nth-child(3) {
+    animation: cloud-drift-3 40s linear infinite;
+    height: var(--cloud-height-small);
+    bottom: 75%;
+    background: radial-gradient(ellipse, 
+        var(--cloud-medium) 0%, 
+        var(--cloud-dark) 40%,
+        transparent 100%);
+    opacity: 0.15;
+    animation-delay: -25s;
+}
+
+@keyframes cloud-drift-1 {
+    0% { transform: translateX(-250px); }
+    100% { transform: translateX(calc(100vw + 250px)); }
+}
+
+@keyframes cloud-drift-2 {
+    0% { transform: translateX(calc(100vw + 200px)); }
+    100% { transform: translateX(-200px); }
+}
+
+@keyframes cloud-drift-3 {
+    0% { transform: translateX(-150px); }
+    100% { transform: translateX(calc(100vw + 150px)); }
+}
+
+/* Subtle twinkling stars */
+.environment-accent:nth-child(4) {
+    position: absolute;
+    left: 15%;
+    top: 18%;
+    width: var(--star-size-medium);
+    height: var(--star-size-medium);
+    background: var(--star-white);
+    border-radius: 50%;
+    animation: twinkle-1 4s ease-in-out infinite;
+    box-shadow: 0 0 4px var(--star-white);
+}
+
+.environment-accent:nth-child(5) {
+    position: absolute;
+    left: 35%;
+    top: 12%;
+    width: var(--star-size-large);
+    height: var(--star-size-large);
+    background: var(--star-blue);
+    border-radius: 50%;
+    animation: twinkle-2 5s ease-in-out infinite;
+    box-shadow: 0 0 6px var(--star-blue);
+    animation-delay: -1.5s;
+}
+
+.environment-accent:nth-child(6) {
+    position: absolute;
+    left: 60%;
+    top: 22%;
+    width: var(--star-size-small);
+    height: var(--star-size-small);
+    background: var(--star-yellow);
+    border-radius: 50%;
+    animation: twinkle-3 3s ease-in-out infinite;
+    box-shadow: 0 0 3px var(--star-yellow);
+    animation-delay: -2.2s;
+}
+
+/* Additional stars using pseudo-elements */
+.environment-accent:nth-child(4)::before {
+    content: '';
+    position: absolute;
+    left: 280px;
+    top: -40px;
+    width: var(--star-size-small);
+    height: var(--star-size-small);
+    background: var(--star-white);
+    border-radius: 50%;
+    animation: twinkle-1 3.5s ease-in-out infinite;
+    box-shadow: 0 0 3px var(--star-white);
+    animation-delay: -0.8s;
+}
+
+.environment-accent:nth-child(4)::after {
+    content: '';
+    position: absolute;
+    left: 450px;
+    top: 25px;
+    width: var(--star-size-medium);
+    height: var(--star-size-medium);
+    background: var(--star-blue);
+    border-radius: 50%;
+    animation: twinkle-2 4.2s ease-in-out infinite;
+    box-shadow: 0 0 4px var(--star-blue);
+    animation-delay: -2s;
+}
+
+.environment-accent:nth-child(5)::before {
+    content: '';
+    position: absolute;
+    left: -180px;
+    top: 50px;
+    width: var(--star-size-small);
+    height: var(--star-size-small);
+    background: var(--star-yellow);
+    border-radius: 50%;
+    animation: twinkle-3 2.8s ease-in-out infinite;
+    box-shadow: 0 0 3px var(--star-yellow);
+    animation-delay: -1.2s;
+}
+
+.environment-accent:nth-child(5)::after {
+    content: '';
+    position: absolute;
+    left: 120px;
+    top: -30px;
+    width: var(--star-size-large);
+    height: var(--star-size-large);
+    background: var(--star-white);
+    border-radius: 50%;
+    animation: twinkle-1 5.5s ease-in-out infinite;
+    box-shadow: 0 0 6px var(--star-white);
+    animation-delay: -3s;
+}
+
+.environment-accent:nth-child(6)::before {
+    content: '';
+    position: absolute;
+    left: -220px;
+    top: -60px;
+    width: var(--star-size-medium);
+    height: var(--star-size-medium);
+    background: var(--star-blue);
+    border-radius: 50%;
+    animation: twinkle-2 4.8s ease-in-out infinite;
+    box-shadow: 0 0 5px var(--star-blue);
+    animation-delay: -1.8s;
+}
+
+@keyframes twinkle-1 {
+    0%, 100% { 
+        opacity: 0.4; 
+        transform: scale(0.8);
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1.2);
+    }
+}
+
+@keyframes twinkle-2 {
+    0%, 100% { 
+        opacity: 0.3; 
+        transform: scale(0.9);
+    }
+    25% { 
+        opacity: 0.7; 
+        transform: scale(1.1);
+    }
+    75% { 
+        opacity: 0.9; 
+        transform: scale(1.3);
+    }
+}
+
+@keyframes twinkle-3 {
+    0%, 100% { 
+        opacity: 0.2; 
+        transform: scale(0.7);
+    }
+    33% { 
+        opacity: 0.8; 
+        transform: scale(1.0);
+    }
+    66% { 
+        opacity: 0.5; 
+        transform: scale(1.1);
+    }
+}
+
+/* =========================
+   Global Text Overrides for Night Theme
+   ========================= */
+body {
+    color: var(--text-secondary-night);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary-night) !important;
+}
+
+p {
+    color: var(--text-secondary-night);
+}
+
+.hero p {
+    color: var(--text-accent-night);
+}
+
+.blog-meta,
+.single-meta {
+    color: var(--text-muted-night);
+}
+
+.tag,
+.tech-tag {
+    background-color: rgba(80, 80, 140, 0.3);
+    color: var(--text-secondary-night);
+}
+
+.about-text {
+    color: var(--text-secondary-night);
+}
+
+.value-item p {
+    color: var(--text-accent-night);
+}
+
+.list-header p {
+    color: var(--text-accent-night);
+}
+
+/* =========================
+   Navigation - Night Theme
+   ========================= */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(180deg, 
+        var(--nav-night-dark) 0%,
+        var(--nav-night-medium) 100%
+    );
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--nav-border-night);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 20px var(--nav-shadow-night);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-xxl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--nav-logo-night) !important;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--spacing-xxxl);
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--nav-link-night) !important;
+    font-weight: var(--font-weight-normal);
+    transition: all 0.3s ease;
+    font-size: var(--font-size-sm);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.nav-links a:hover {
+    color: var(--nav-link-night-hover) !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================
+   Products Section - Night Theme
+   ========================= */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xxxl);
+}
+
+.product-card {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, 
+        var(--card-night-dark) 0%,
+        var(--card-night-medium) 50%,
+        var(--card-night-light) 100%
+    );
+    border: 1px solid var(--card-border-night);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: 
+        0 4px 20px var(--card-shadow-night),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--card-accent-night) 0%,
+        var(--card-accent-night-bright) 50%,
+        var(--card-accent-night) 100%
+    );
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+        0 8px 30px var(--card-shadow-night-hover),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, 
+        rgba(26, 27, 58, 0.95) 0%,
+        rgba(44, 44, 84, 0.85) 50%,
+        rgba(64, 64, 122, 0.95) 100%
+    );
+}
+
+.product-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xl);
+    color: var(--card-text-light) !important;
+    font-weight: var(--font-weight-medium);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.product-card p {
+    color: var(--card-text-medium);
+    line-height: 1.6;
+}
+
+.product-card h3 a {
+    color: var(--card-text-light) !important;
+}
+
+.product-card h3 a:hover {
+    color: var(--text-accent-night) !important;
+}
+
+/* Night-themed product icons */
+.product-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto var(--spacing-xl);
+    background: linear-gradient(135deg, 
+        var(--card-accent-night) 0%,
+        var(--card-accent-night-bright) 100%
+    );
+    border-radius: 50%;
+    box-shadow: 
+        0 4px 15px var(--card-shadow-night-hover),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.product-icon::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(circle, 
+        rgba(255, 255, 255, 0.2) 0%,
+        transparent 70%
+    );
+    border-radius: 50%;
+}
+
+.product-icon-svg {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 0 auto var(--spacing-xl);
+    filter: drop-shadow(0 2px 8px var(--card-shadow-night-hover)) 
+            brightness(0.9) contrast(1.1);
+}
+
+/* Work and Blog Items - Night Theme */
+.work-item {
+    border: 1px solid var(--card-border-night);
+    padding: var(--spacing-xxl);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: linear-gradient(135deg, 
+        rgba(26, 27, 58, 0.8) 0%,
+        rgba(44, 44, 84, 0.7) 100%
+    );
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 15px var(--card-shadow-night);
+    border-radius: var(--radius-sm);
+}
+
+.work-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--card-shadow-night-hover);
+}
+
+.work-item h3 {
+    color: var(--card-text-light) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.work-item h3 a {
+    color: var(--card-text-light) !important;
+}
+
+.work-item h3 a:hover {
+    color: var(--text-accent-night) !important;
+}
+
+.work-item p {
+    color: var(--text-secondary-night);
+}
+
+.blog-list-item {
+    border-bottom: 1px solid var(--nav-border-night);
+    padding: var(--spacing-xxl);
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, 
+        rgba(26, 27, 58, 0.8) 0%,
+        rgba(44, 44, 84, 0.7) 100%
+    );
+    backdrop-filter: blur(5px);
+    box-shadow: 0 1px 10px var(--card-shadow-night);
+}
+
+.blog-list-item:nth-child(even) {
+    background: linear-gradient(135deg, 
+        rgba(44, 44, 84, 0.8) 0%,
+        rgba(64, 64, 122, 0.6) 100%
+    );
+}
+
+.blog-list-item:hover {
+    box-shadow: 0 4px 20px var(--card-shadow-night-hover);
+}
+
+.blog-list-item h2 {
+    color: var(--card-text-light) !important;
+}
+
+.blog-list-item h2 a {
+    color: var(--card-text-light) !important;
+}
+
+.blog-list-item h2 a:hover {
+    color: var(--text-accent-night) !important;
+}
+
+.blog-list-item p,
+.blog-list-item .blog-excerpt {
+    color: var(--text-secondary-night);
+}
+
+.read-more {
+    color: var(--text-primary-night) !important;
+}
+
+.read-more:hover {
+    color: var(--text-accent-night) !important;
+}
+
+/* Search Box - Night Theme */
+.search-input {
+    width: 100%;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    font-size: var(--font-size-base);
+    border: 1px solid var(--card-border-night);
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, 
+        rgba(26, 27, 58, 0.9) 0%,
+        rgba(44, 44, 84, 0.8) 100%
+    );
+    backdrop-filter: blur(5px);
+    color: var(--card-text-light);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px var(--card-shadow-night);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--card-accent-night-bright);
+    box-shadow: 
+        0 0 0 3px rgba(100, 100, 160, 0.2),
+        0 4px 15px var(--card-shadow-night-hover);
+}
+
+.search-input::placeholder {
+    color: var(--card-text-medium);
+}
+
+/* Links */
+a {
+    color: var(--text-primary-night);
+}
+
+a:hover {
+    color: var(--text-accent-night);
+}
+
+.view-all-link {
+    color: var(--text-primary-night) !important;
+}
+
+.view-all-link:hover {
+    color: var(--text-accent-night) !important;
+}
+
+.back-link {
+    color: var(--text-primary-night) !important;
+}
+
+.back-link:hover {
+    color: var(--text-accent-night) !important;
+}
+
+/* Blog post content */
+.blog-post h3 {
+    color: var(--card-text-light) !important;
+}
+
+.blog-post h3 a {
+    color: var(--card-text-light) !important;
+}
+
+.blog-post h3 a:hover {
+    color: var(--text-accent-night) !important;
+}
+
+.blog-post p,
+.blog-excerpt {
+    color: var(--text-secondary-night);
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .environment-container::before {
+        width: var(--moon-size-mobile);
+        height: var(--moon-size-mobile);
+        top: 6%;
+        right: 12%;
+    }
+    
+    .environment-container::after {
+        top: 7.5%;
+        right: 13.8%;
+        width: 8px;
+        height: 8px;
+        box-shadow: 
+            12px 8px 0 2px var(--moon-crater),
+            -6px 18px 0 2px var(--moon-crater-dark),
+            18px -4px 0 1px var(--moon-crater);
+    }
+    
+    .environment-element {
+        height: var(--cloud-height-small);
+    }
+    
+    .environment-element:nth-child(1) {
+        height: var(--cloud-height-medium);
+    }
+    
+    .environment-element:nth-child(2) {
+        height: 35px;
+    }
+    
+    .environment-element:nth-child(3) {
+        height: 25px;
+    }
+    
+    .environment-accent {
+        width: var(--star-size-small);
+        height: var(--star-size-small);
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .environment-container {
+        background: linear-gradient(180deg, 
+            var(--night-deep-blue) 0%,
+            var(--night-dark-blue) 100%
+        );
+    }
+    
+    .environment-container::before,
+    .environment-container::after,
+    .environment-element,
+    .environment-accent {
+        animation: none;
+    }
+}

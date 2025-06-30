@@ -9,9 +9,22 @@
     
     {{ block "styles" . }}
     <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
+     <link rel="stylesheet" href="{{ "css/night.css" | relURL }}">
     {{ end }}
 </head>
 <body>
+    <!-- Environment Background -->
+    <div class="environment-container">
+        <!-- Primary environment elements -->
+        <div class="environment-element"></div>
+        <div class="environment-element"></div>
+        <div class="environment-element"></div>
+        
+        <!-- Secondary environment elements -->
+        <div class="environment-accent"></div>
+        <div class="environment-accent"></div>
+        <div class="environment-accent"></div>
+    </div>
     {{ partial "header.html" . }}
     
     <main>

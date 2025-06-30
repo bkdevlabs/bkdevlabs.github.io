@@ -2,6 +2,15 @@
    Night Theme Variables
    ========================= */
 :root {
+
+    /* Override main.css colors for night theme */
+    --primary-color: rgba(245, 245, 245, 0.95);
+    --secondary-color: rgba(200, 200, 220, 0.9);
+    --accent-color: rgba(180, 180, 200, 0.8);
+    --bg-color: rgba(26, 27, 58, 0.95);
+    --light-gray: rgba(44, 44, 84, 0.8);
+    --border-color: rgba(100, 100, 120, 0.3);
+    
     /* Night Environment Colors - More Classy and Muted */
     --night-deep-blue: #0A0B1E;
     --night-dark-blue: #1B1B3A;
@@ -403,51 +412,22 @@ p {
    Navigation - Night Theme
    ========================= */
 nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
     background: linear-gradient(180deg, 
         var(--nav-night-dark) 0%,
         var(--nav-night-medium) 100%
     );
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--nav-border-night);
-    z-index: 1000;
-    transition: all 0.3s ease;
     box-shadow: 0 2px 20px var(--nav-shadow-night);
 }
 
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: var(--spacing-xl) var(--spacing-xxl);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .logo {
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-bold);
     color: var(--nav-logo-night) !important;
-    text-decoration: none;
-    letter-spacing: -0.5px;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.nav-links {
-    display: flex;
-    gap: var(--spacing-xxxl);
-    list-style: none;
-}
-
 .nav-links a {
-    text-decoration: none;
     color: var(--nav-link-night) !important;
-    font-weight: var(--font-weight-normal);
-    transition: all 0.3s ease;
-    font-size: var(--font-size-sm);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .nav-links a:hover {
@@ -623,6 +603,10 @@ nav {
         rgba(44, 44, 84, 0.8) 0%,
         rgba(64, 64, 122, 0.6) 100%
     );
+}
+
+.blog-list-item:nth-child(odd) {
+    background: linear-gradient(135deg, rgba(26, 27, 58, 0.8) 0%, rgba(44, 44, 84, 0.7) 100%);
 }
 
 .blog-list-item:hover {

@@ -402,16 +402,8 @@ h2 {
     border-bottom: 1px solid var(--border-color);
     padding: var(--spacing-xxl);
     transition: background 0.3s;
-    background: var(--bg-color);
 }
 
-.blog-list-item:nth-child(even) {
-    background: var(--light-gray);
-}
-
-.blog-list-item:nth-child(odd) {
-    background: var(--bg-color);
-}
 
 /* Optional: Add a subtle box-shadow for more separation */
 .blog-list-item {

@@ -1,0 +1,557 @@
+/* =========================
+   Forest Theme Variables
+   ========================= */
+:root {
+    /* Forest Environment Colors - Pleasant and Soft */
+    --forest-sky-blue: #87CEEB;
+    --forest-soft-mint: #F0FFF0;
+    --forest-pale-green: #E6F3E6;
+    --forest-sage-green: #9CAF88;
+    --forest-moss-green: #8FBC8F;
+    --forest-deep-forest: #355E3B;
+    
+    /* Sun Colors */
+    --forest-sun-gold: #FFD700;
+    --forest-sun-warm: #FFA500;
+    --forest-sun-glow: rgba(255, 215, 0, 0.2);
+    --forest-sun-glow-bright: rgba(255, 215, 0, 0.4);
+    
+    /* Tree Colors - More Natural */
+    --tree-trunk-dark: #4A4A3A;
+    --tree-trunk-medium: #6B5B73;
+    --tree-foliage-dark: #2F4F2F;
+    --tree-foliage-medium: #556B2F;
+    --tree-foliage-light: #6B8E23;
+    
+    /* Grass/Ground Colors */
+    --grass-light: rgba(144, 238, 144, 0.3);
+    --grass-medium: rgba(107, 142, 35, 0.4);
+    --grass-dark: rgba(85, 107, 47, 0.5);
+    
+    /* Leaf Colors - Autumn Mix */
+    --leaf-green: rgba(107, 142, 35, 0.8);
+    --leaf-yellow: rgba(255, 215, 0, 0.8);
+    --leaf-orange: rgba(255, 140, 0, 0.8);
+    --leaf-brown: rgba(139, 69, 19, 0.8);
+    --leaf-red: rgba(178, 34, 34, 0.7);
+    
+    /* Bird Colors */
+    --bird-blue: rgba(70, 130, 180, 0.9);
+    --bird-red: rgba(220, 20, 60, 0.8);
+    --bird-yellow: rgba(255, 215, 0, 0.9);
+    
+    /* Navigation Colors - Forest Theme */
+    --nav-forest-light: rgba(240, 255, 240, 0.95);
+    --nav-forest-medium: rgba(152, 251, 152, 0.9);
+    --nav-border-forest: rgba(107, 142, 35, 0.3);
+    --nav-shadow-forest: rgba(85, 107, 47, 0.1);
+    --nav-logo-forest: rgba(85, 107, 47, 0.9);
+    --nav-link-forest: rgba(107, 142, 35, 0.8);
+    --nav-link-forest-hover: rgba(85, 107, 47, 1);
+    
+    /* Card Colors - Forest Theme */
+    --card-forest-light: rgba(240, 255, 240, 0.9);
+    --card-forest-medium: rgba(144, 238, 144, 0.8);
+    --card-forest-sage: rgba(156, 175, 136, 0.9);
+    --card-border-forest: rgba(107, 142, 35, 0.2);
+    --card-shadow-forest: rgba(85, 107, 47, 0.1);
+    --card-shadow-forest-hover: rgba(85, 107, 47, 0.2);
+    --card-accent-forest: rgba(107, 142, 35, 0.6);
+    --card-accent-forest-dark: rgba(85, 107, 47, 0.8);
+    
+    /* Size Variables */
+    --forest-sun-size: 50px;
+    --forest-sun-size-mobile: 40px;
+    --leaf-size-small: 6px;
+    --leaf-size-medium: 8px;
+    --leaf-size-large: 12px;
+    --bird-size-small: 4px;
+    --bird-size-medium: 6px;
+    --grass-height-small: 30px;
+    --grass-height-medium: 50px;
+    --grass-height-large: 70px;
+}
+
+/* =========================
+   Forest Environment Effect
+   ========================= */
+
+.environment-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(180deg, 
+        var(--forest-sky-blue) 0%,
+        var(--forest-soft-mint) 25%,
+        var(--forest-pale-green) 50%,
+        var(--forest-sage-green) 75%,
+        var(--forest-moss-green) 100%
+    );
+}
+
+/* Soft filtered sun */
+.environment-container::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: 25%;
+    width: var(--forest-sun-size);
+    height: var(--forest-sun-size);
+    background: radial-gradient(circle, 
+        var(--forest-sun-gold) 0%,
+        var(--forest-sun-warm) 60%,
+        rgba(255, 165, 0, 0.3) 100%
+    );
+    border-radius: 50%;
+    box-shadow: 0 0 30px var(--forest-sun-glow);
+    animation: forest-sun-glow 8s ease-in-out infinite alternate;
+    opacity: 0.7;
+}
+
+@keyframes forest-sun-glow {
+    0% {
+        box-shadow: 0 0 30px var(--forest-sun-glow);
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        box-shadow: 0 0 50px var(--forest-sun-glow-bright);
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+/* Tree silhouettes - More natural and varied */
+.environment-container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    background: 
+        /* Tree trunks and foliage - more natural arrangement */
+        radial-gradient(ellipse 30px 100px at 12% 100%, var(--tree-trunk-dark) 0%, var(--tree-trunk-dark) 60%, transparent 60%),
+        radial-gradient(ellipse 45px 80px at 10% 40%, var(--tree-foliage-dark) 0%, var(--tree-foliage-dark) 55%, transparent 55%),
+        radial-gradient(ellipse 35px 60px at 15% 30%, var(--tree-foliage-medium) 0%, var(--tree-foliage-medium) 50%, transparent 50%),
+        
+        radial-gradient(ellipse 40px 120px at 28% 100%, var(--tree-trunk-medium) 0%, var(--tree-trunk-medium) 60%, transparent 60%),
+        radial-gradient(ellipse 55px 90px at 25% 45%, var(--tree-foliage-light) 0%, var(--tree-foliage-light) 55%, transparent 55%),
+        radial-gradient(ellipse 40px 70px at 30% 35%, var(--tree-foliage-medium) 0%, var(--tree-foliage-medium) 50%, transparent 50%),
+        
+        radial-gradient(ellipse 25px 90px at 55% 100%, var(--tree-trunk-dark) 0%, var(--tree-trunk-dark) 60%, transparent 60%),
+        radial-gradient(ellipse 40px 75px at 53% 50%, var(--tree-foliage-dark) 0%, var(--tree-foliage-dark) 55%, transparent 55%),
+        
+        radial-gradient(ellipse 35px 110px at 75% 100%, var(--tree-trunk-medium) 0%, var(--tree-trunk-medium) 60%, transparent 60%),
+        radial-gradient(ellipse 50px 85px at 72% 40%, var(--tree-foliage-light) 0%, var(--tree-foliage-light) 55%, transparent 55%),
+        radial-gradient(ellipse 30px 55px at 78% 30%, var(--tree-foliage-medium) 0%, var(--tree-foliage-medium) 50%, transparent 50%),
+        
+        radial-gradient(ellipse 20px 80px at 90% 100%, var(--tree-trunk-dark) 0%, var(--tree-trunk-dark) 60%, transparent 60%),
+        radial-gradient(ellipse 35px 65px at 88% 55%, var(--tree-foliage-dark) 0%, var(--tree-foliage-dark) 55%, transparent 55%);
+    opacity: 0.8;
+    animation: forest-sway 12s ease-in-out infinite alternate;
+}
+
+@keyframes forest-sway {
+    0% { 
+        transform: translateX(-1px);
+        opacity: 0.8;
+    }
+    100% { 
+        transform: translateX(1px);
+        opacity: 0.85;
+    }
+}
+
+/* Grass layers - softer and more natural */
+.environment-element {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--grass-height-medium);
+    background: linear-gradient(180deg, 
+        var(--grass-light) 0%, 
+        var(--grass-medium) 100%);
+    opacity: 0.6;
+}
+
+.environment-element:nth-child(1) {
+    animation: grass-wave-1 14s ease-in-out infinite;
+    border-radius: 50% 50% 0 0;
+    height: var(--grass-height-large);
+    background: linear-gradient(180deg, 
+        var(--grass-medium) 0%, 
+        var(--grass-dark) 100%);
+    opacity: 0.7;
+}
+
+.environment-element:nth-child(2) {
+    animation: grass-wave-2 16s ease-in-out infinite;
+    border-radius: 60% 40% 0 0;
+    height: var(--grass-height-medium);
+    background: linear-gradient(180deg, 
+        var(--grass-light) 0%, 
+        var(--grass-medium) 100%);
+    opacity: 0.5;
+    animation-delay: -3s;
+}
+
+.environment-element:nth-child(3) {
+    animation: grass-wave-3 18s ease-in-out infinite;
+    border-radius: 40% 60% 0 0;
+    height: var(--grass-height-small);
+    background: linear-gradient(180deg, 
+        rgba(152, 251, 152, 0.2) 0%, 
+        var(--grass-light) 100%);
+    opacity: 0.4;
+    animation-delay: -6s;
+}
+
+@keyframes grass-wave-1 {
+    0%, 100% {
+        transform: translateX(-20%) scaleX(1);
+        border-radius: 50% 50% 0 0;
+    }
+    50% {
+        transform: translateX(-25%) scaleX(1.02);
+        border-radius: 45% 55% 0 0;
+    }
+}
+
+@keyframes grass-wave-2 {
+    0%, 100% {
+        transform: translateX(-15%) scaleX(1);
+        border-radius: 60% 40% 0 0;
+    }
+    50% {
+        transform: translateX(-30%) scaleX(1.01);
+        border-radius: 40% 60% 0 0;
+    }
+}
+
+@keyframes grass-wave-3 {
+    0%, 100% {
+        transform: translateX(-35%) scaleX(1);
+        border-radius: 40% 60% 0 0;
+    }
+    50% {
+        transform: translateX(-20%) scaleX(1.02);
+        border-radius: 60% 40% 0 0;
+    }
+}
+
+/* Floating leaves and birds */
+.environment-accent:nth-child(4) {
+    position: absolute;
+    left: 20%;
+    top: 25%;
+    width: var(--leaf-size-medium);
+    height: var(--leaf-size-medium);
+    background: var(--leaf-green);
+    border-radius: 50% 0% 50% 0%;
+    animation: leaf-float-1 10s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.environment-accent:nth-child(5) {
+    position: absolute;
+    left: 65%;
+    top: 35%;
+    width: var(--leaf-size-large);
+    height: var(--leaf-size-large);
+    background: var(--leaf-yellow);
+    border-radius: 0% 50% 0% 50%;
+    animation: leaf-float-2 12s ease-in-out infinite;
+    opacity: 0.7;
+    animation-delay: -4s;
+}
+
+.environment-accent:nth-child(6) {
+    position: absolute;
+    left: 45%;
+    top: 15%;
+    width: var(--leaf-size-small);
+    height: var(--leaf-size-small);
+    background: var(--leaf-orange);
+    border-radius: 80% 20% 80% 20%;
+    animation: leaf-float-3 8s ease-in-out infinite;
+    opacity: 0.9;
+    animation-delay: -2s;
+}
+
+/* Flying birds */
+.environment-accent::before {
+    content: '';
+    position: absolute;
+    width: var(--bird-size-medium);
+    height: var(--bird-size-small);
+    background: var(--bird-blue);
+    border-radius: 50% 0% 50% 0%;
+    top: -20px;
+    left: 80%;
+    animation: bird-fly 15s linear infinite;
+    opacity: 0.6;
+}
+
+.environment-accent::after {
+    content: '';
+    position: absolute;
+    width: var(--bird-size-small);
+    height: var(--bird-size-small);
+    background: var(--bird-red);
+    border-radius: 0% 50% 0% 50%;
+    top: -40px;
+    left: 70%;
+    animation: bird-fly-2 18s linear infinite;
+    opacity: 0.7;
+    animation-delay: -6s;
+}
+
+@keyframes leaf-float-1 {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.8;
+    }
+    25% {
+        transform: translateY(-20px) rotate(90deg);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateY(-35px) rotate(180deg);
+        opacity: 0.6;
+    }
+    75% {
+        transform: translateY(-15px) rotate(270deg);
+        opacity: 0.8;
+    }
+}
+
+@keyframes leaf-float-2 {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg) scale(1);
+        opacity: 0.7;
+    }
+    33% {
+        transform: translateY(-25px) rotate(120deg) scale(1.1);
+        opacity: 0.9;
+    }
+    66% {
+        transform: translateY(-40px) rotate(240deg) scale(0.9);
+        opacity: 0.5;
+    }
+}
+
+@keyframes leaf-float-3 {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg) translateX(0px);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateY(-30px) rotate(180deg) translateX(10px);
+        opacity: 0.6;
+    }
+}
+
+@keyframes bird-fly {
+    0% {
+        transform: translateX(-100px) translateY(0px);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateX(calc(100vw + 100px)) translateY(-20px);
+        opacity: 0;
+    }
+}
+
+@keyframes bird-fly-2 {
+    0% {
+        transform: translateX(calc(100vw + 100px)) translateY(0px);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateX(-100px) translateY(-30px);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   Navigation - Forest Theme
+   ========================= */
+nav {
+    background: linear-gradient(180deg, 
+        var(--nav-forest-light) 0%,
+        var(--nav-forest-medium) 100%
+    );
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--nav-border-forest);
+}
+
+/* =========================
+   Products Section - Forest Theme
+   ========================= */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xxxl);
+}
+
+.product-card {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, 
+        var(--card-forest-light) 0%,
+        var(--card-forest-medium) 50%,
+        var(--card-forest-sage) 100%
+    );
+    border: 1px solid var(--card-border-forest);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: 
+        0 4px 20px var(--card-shadow-forest),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--card-accent-forest) 0%,
+        var(--card-accent-forest-dark) 50%,
+        var(--card-accent-forest) 100%
+    );
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+        0 8px 30px var(--card-shadow-forest-hover),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.product-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-xl);
+    color: var(--nav-logo-forest);
+    font-weight: var(--font-weight-medium);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.product-card p {
+    color: var(--nav-link-forest);
+    line-height: 1.6;
+}
+
+/* Forest-themed product icons */
+.product-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto var(--spacing-xl);
+    background: linear-gradient(135deg, 
+        var(--card-accent-forest) 0%,
+        var(--card-accent-forest-dark) 100%
+    );
+    border-radius: 50%;
+    box-shadow: 
+        0 4px 15px var(--card-shadow-forest-hover),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    position: relative;
+}
+
+.product-icon::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(circle, 
+        rgba(255, 255, 255, 0.4) 0%,
+        transparent 70%
+    );
+    border-radius: 50%;
+}
+
+.product-icon-svg {
+    width: 60px;
+    height: 60px;
+    display: block;
+    margin: 0 auto var(--spacing-xl);
+    filter: drop-shadow(0 2px 8px var(--card-shadow-forest-hover));
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .environment-container::before {
+        width: var(--forest-sun-size-mobile);
+        height: var(--forest-sun-size-mobile);
+        top: 10%;
+        right: 20%;
+    }
+    
+    .environment-container::after {
+        height: 200px;
+    }
+    
+    .environment-element {
+        height: var(--grass-height-small);
+    }
+    
+    .environment-element:nth-child(1) {
+        height: var(--grass-height-medium);
+    }
+    
+    .environment-element:nth-child(2) {
+        height: 35px;
+    }
+    
+    .environment-element:nth-child(3) {
+        height: 25px;
+    }
+    
+    .environment-accent {
+        width: var(--leaf-size-small);
+        height: var(--leaf-size-small);
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .environment-container {
+        background: linear-gradient(180deg, 
+            var(--forest-soft-mint) 0%,
+            var(--forest-pale-green) 100%
+        );
+    }
+    
+    .environment-container::before,
+    .environment-container::after,
+    .environment-element,
+    .environment-accent {
+        animation: none;
+    }
+}

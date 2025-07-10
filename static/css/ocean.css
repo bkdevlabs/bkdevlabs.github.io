@@ -1,0 +1,473 @@
+/* =========================
+   Ocean Theme Variables
+   ========================= */
+:root {
+    /* Override main.css colors for ocean theme - WCAG AA Compliant */
+    --primary-color: #1a365d;        /* Dark blue for high contrast */
+    --secondary-color: #2d3748;      /* Dark gray-blue for body text */
+    --accent-color: #2b6cb0;         /* Medium blue for links */
+    --bg-color: #ffffff;             /* Pure white background */
+    --light-gray: #f7fafc;           /* Very light blue-gray */
+    --border-color: #cbd5e0;         /* Light blue-gray for borders */
+
+    /* Ocean Environment Colors */
+    --ocean-sky-blue: #87CEEB;
+    --ocean-light-blue: #98D8E8;
+    --ocean-powder-blue: #B0E0E6;
+    --ocean-alice-blue: #F0F8FF;
+    
+    /* Ocean Life Colors */
+    --pearl-white: rgba(255, 255, 255, 0.9);
+    --pearl-cream: rgba(245, 245, 220, 0.8);
+    --coral-pink: rgba(255, 182, 193, 0.7);
+    --coral-orange: rgba(255, 160, 122, 0.6);
+    --seaweed-green: rgba(46, 125, 50, 0.4);
+    --fish-silver: rgba(192, 192, 192, 0.7);
+    --shell-beige: rgba(245, 222, 179, 0.8);
+    
+    /* Sun Colors */
+    --sun-gold: #FFD700;
+    --sun-orange: #FFA500;
+    --sun-glow: rgba(255, 215, 0, 0.4);
+    --sun-glow-bright: rgba(255, 215, 0, 0.6);
+    --sun-orange-fade: rgba(255, 165, 0, 0.3);
+    
+    /* Wave Colors */
+    --wave-light-blue: rgba(30, 144, 255, 0.1);
+    --wave-royal-blue: rgba(65, 105, 225, 0.2);
+    --wave-deep-blue: rgba(30, 144, 255, 0.2);
+    --wave-navy: rgba(25, 25, 112, 0.4);
+    --wave-steel-blue: rgba(70, 130, 180, 0.15);
+    --wave-cornflower: rgba(100, 149, 237, 0.3);
+    --wave-sky-blue: rgba(135, 206, 250, 0.1);
+    --wave-light-steel: rgba(176, 196, 222, 0.25);
+    
+    /* Animation Values */
+    --bubble-opacity-low: 0.5;
+    --bubble-opacity-medium: 0.7;
+    --bubble-opacity-high: 0.9;
+    --wave-opacity-low: 0.4;
+    --wave-opacity-medium: 0.6;
+    --wave-opacity-high: 0.8;
+    
+    /* Size Variables */
+    --sun-size: 80px;
+    --sun-size-mobile: 60px;
+    --pearl-size-small: 4px;
+    --pearl-size-medium: 6px;
+    --pearl-size-large: 8px;
+    --coral-size-small: 12px;
+    --coral-size-medium: 18px;
+    --wave-height-small: 40px;
+    --wave-height-medium: 60px;
+    --wave-height-large: 80px;
+}
+
+/* =========================
+   Ocean Environment Effect
+   ========================= */
+.environment-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(180deg, 
+        var(--ocean-sky-blue) 0%,
+        var(--ocean-light-blue) 30%,
+        var(--ocean-powder-blue) 60%,
+        var(--ocean-alice-blue) 100%
+    );
+}
+
+/* Sun */
+.environment-container::before {
+    content: '';
+    position: absolute;
+    top: 8%;
+    right: 15%;
+    width: var(--sun-size);
+    height: var(--sun-size);
+    background: radial-gradient(circle, 
+        var(--sun-gold) 0%,
+        var(--sun-orange) 70%,
+        var(--sun-orange-fade) 100%
+    );
+    border-radius: 50%;
+    box-shadow: 0 0 60px var(--sun-glow);
+    animation: sun-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes sun-glow {
+    0% {
+        box-shadow: 0 0 60px var(--sun-glow);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow: 0 0 80px var(--sun-glow-bright);
+        transform: scale(1.05);
+    }
+}
+
+.environment-element{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--wave-height-medium);
+    background: linear-gradient(180deg, 
+        var(--wave-light-blue) 0%, 
+        var(--wave-royal-blue) 100%);
+    opacity: var(--wave-opacity-medium);
+}
+
+/* Ocean Waves */
+.environment-element:nth-child(1) {
+    animation: ocean-wave-1 8s ease-in-out infinite;
+    border-radius: 50% 50% 0 0;
+    height: var(--wave-height-large);
+    background: linear-gradient(180deg, 
+        var(--wave-deep-blue) 0%, 
+        var(--wave-navy) 100%);
+    opacity: var(--wave-opacity-high);
+    z-index: -1;
+}
+
+.environment-element:nth-child(2) {
+    animation: ocean-wave-2 10s ease-in-out infinite;
+    border-radius: 60% 40% 0 0;
+    height: var(--wave-height-medium);
+    background: linear-gradient(180deg, 
+        var(--wave-steel-blue) 0%, 
+        var(--wave-cornflower) 100%);
+    opacity: var(--wave-opacity-medium);
+    animation-delay: -2s;
+}
+
+.environment-element:nth-child(3) {
+    animation: ocean-wave-3 12s ease-in-out infinite;
+    border-radius: 40% 60% 0 0;
+    height: var(--wave-height-small);
+    background: linear-gradient(180deg, 
+        var(--wave-sky-blue) 0%, 
+        var(--wave-light-steel) 100%);
+    opacity: var(--wave-opacity-low);
+    animation-delay: -4s;
+}
+
+@keyframes ocean-wave-1 {
+    0%, 100% {
+        transform: translateX(-50%) scaleX(1);
+        border-radius: 50% 50% 0 0;
+    }
+    25% {
+        transform: translateX(-45%) scaleX(1.05);
+        border-radius: 60% 40% 0 0;
+    }
+    50% {
+        transform: translateX(-55%) scaleX(1.1);
+        border-radius: 40% 60% 0 0;
+    }
+    75% {
+        transform: translateX(-48%) scaleX(1.03);
+        border-radius: 55% 45% 0 0;
+    }
+}
+
+@keyframes ocean-wave-2 {
+    0%, 100% {
+        transform: translateX(-40%) scaleX(1);
+        border-radius: 60% 40% 0 0;
+    }
+    33% {
+        transform: translateX(-60%) scaleX(1.08);
+        border-radius: 35% 65% 0 0;
+    }
+    66% {
+        transform: translateX(-30%) scaleX(1.05);
+        border-radius: 70% 30% 0 0;
+    }
+}
+
+@keyframes ocean-wave-3 {
+    0%, 100% {
+        transform: translateX(-60%) scaleX(1);
+        border-radius: 40% 60% 0 0;
+    }
+    50% {
+        transform: translateX(-35%) scaleX(1.12);
+        border-radius: 65% 35% 0 0;
+    }
+}
+
+/* =========================
+   Navigation - Ocean Theme
+   ========================= */
+nav{
+    background: linear-gradient(180deg, 
+        var(--ocean-alice-blue) 0%,
+        var(--ocean-powder-blue) 100%
+    );
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* =========================
+   Products Section - Ocean Theme
+   ========================= */
+.product-card {
+    background: linear-gradient(135deg, 
+        var(--ocean-alice-blue) 0%,
+        var(--ocean-powder-blue) 50%,
+        var(--ocean-light-blue) 100%
+    );
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(5px);
+    box-shadow: 
+        0 4px 20px var(--wave-light-blue),
+        inset 0 1px 0 var(--pearl-white);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add coral reef border effect */
+.product-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        var(--coral-pink) 20%,
+        var(--coral-orange) 40%,
+        var(--coral-pink) 60%,
+        var(--seaweed-green) 80%,
+        transparent 100%
+    );
+    animation: coral-sway 8s ease-in-out infinite;
+}
+
+@keyframes coral-sway {
+    0%, 100% {
+        transform: scaleX(1) scaleY(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scaleX(1.05) scaleY(1.1);
+        opacity: 0.8;
+    }
+}
+
+/* Add floating pearl effect */
+.product-card::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    width: var(--pearl-size-medium);
+    height: var(--pearl-size-medium);
+    background: radial-gradient(circle at 30% 30%, 
+        var(--pearl-white) 0%,
+        var(--pearl-cream) 70%,
+        var(--fish-silver) 100%
+    );
+    border-radius: 50%;
+    box-shadow: 
+        0 2px 4px rgba(255, 255, 255, 0.3),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+    animation: pearl-float 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes pearl-float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    25% {
+        transform: translateY(-8px) rotate(90deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-15px) rotate(180deg);
+        opacity: 0.9;
+    }
+    75% {
+        transform: translateY(-5px) rotate(270deg);
+        opacity: 0.95;
+    }
+}
+
+.product-card:hover {
+    background: linear-gradient(135deg, 
+        var(--bg-color) 0%,
+        var(--ocean-powder-blue) 50%,
+        var(--ocean-light-blue) 100%
+    );
+    box-shadow: 
+        0 8px 30px var(--wave-royal-blue),
+        inset 0 1px 0 var(--pearl-white);
+    transform: translateY(-3px);
+}
+
+/* Enhanced hover effects */
+.product-card:hover::before {
+    animation-duration: 4s;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        var(--coral-orange) 20%,
+        var(--coral-pink) 40%,
+        var(--coral-orange) 60%,
+        var(--seaweed-green) 80%,
+        transparent 100%
+    );
+}
+
+.product-card:hover::after {
+    animation-duration: 3s;
+    transform: translateY(-20px) rotate(360deg) scale(1.2);
+}
+
+/* =========================
+   Work Cards - Ocean Theme Integration
+   ========================= */
+.work-item {
+    background: linear-gradient(135deg, 
+        var(--ocean-alice-blue) 0%,
+        var(--ocean-powder-blue) 50%,
+        var(--ocean-light-blue) 100%
+    );
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--border-color);
+    box-shadow: 
+        0 4px 20px var(--wave-light-blue),
+        inset 0 1px 0 var(--pearl-white);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add seaweed swaying effect */
+.work-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 3px;
+    height: 20px;
+    background: linear-gradient(180deg, 
+        var(--seaweed-green) 0%,
+        rgba(46, 125, 50, 0.2) 100%
+    );
+    border-radius: 2px;
+    animation: seaweed-sway 4s ease-in-out infinite;
+    transform-origin: bottom center;
+}
+
+@keyframes seaweed-sway {
+    0%, 100% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(5deg);
+    }
+}
+
+/* Add shell decoration */
+.work-item::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: 15%;
+    width: var(--coral-size-small);
+    height: 8px;
+    background: radial-gradient(ellipse, 
+        var(--shell-beige) 0%,
+        var(--pearl-cream) 100%
+    );
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: 
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 1px var(--pearl-white);
+    animation: shell-shimmer 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes shell-shimmer {
+    0%, 100% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.9;
+        transform: scale(1.05);
+    }
+}
+
+.work-item:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(135deg, 
+        var(--bg-color) 0%,
+        var(--ocean-powder-blue) 50%,
+        var(--ocean-light-blue) 100%
+    );
+    box-shadow: 
+        0 8px 30px var(--wave-royal-blue),
+        inset 0 1px 0 var(--pearl-white);
+}
+
+/* Enhanced hover effects */
+.work-item:hover::before {
+    animation-duration: 2s;
+    height: 25px;
+}
+
+.work-item:hover::after {
+    animation-duration: 4s;
+    transform: scale(1.1);
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .product-card::after,
+    .work-item::after {
+        width: var(--pearl-size-small);
+        height: var(--pearl-size-small);
+        top: 12%;
+        right: 8%;
+    }
+    
+    .product-card::before {
+        height: 2px;
+    }
+    
+    .work-item::before {
+        height: 15px;
+        width: 2px;
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .environment-container {
+        background: var(--ocean-alice-blue);
+    }
+    
+    .environment-container::before,
+    .environment-element,
+    .product-card::before,
+    .product-card::after,
+    .work-item::before,
+    .work-item::after {
+        animation: none;
+    }
+    
+    .product-card:hover,
+    .work-item:hover {
+        transform: none;
+    }
+}

@@ -1,0 +1,903 @@
+/* =========================
+   Circus Theme Variables
+   ========================= */
+:root {
+    /* Override main.css colors for circus theme - WCAG AA Compliant */
+    --primary-color: #8B0000;           /* Deep red for high contrast */
+    --secondary-color: #2F2F2F;         /* Dark gray for body text */
+    --accent-color: #B8860B;            /* Dark golden rod for links */
+    --bg-color: #ffffff;                /* Pure white background */
+    --light-gray: #FFF8DC;              /* Cornsilk for light areas */
+    --border-color: #DAA520;            /* Golden rod for borders */
+
+    /* Circus Tent Colors */
+    --tent-red: #DC143C;
+    --tent-white: #FFFFFF;
+    --tent-yellow: #FFD700;
+    --tent-blue: #4169E1;
+    --tent-green: #32CD32;
+    --tent-purple: #8A2BE2;
+    --tent-orange: #FF8C00;
+
+    /* Carnival Light Colors */
+    --light-red: rgba(255, 0, 0, 0.8);
+    --light-yellow: rgba(255, 255, 0, 0.9);
+    --light-blue: rgba(0, 100, 255, 0.8);
+    --light-green: rgba(0, 255, 0, 0.8);
+    --light-purple: rgba(128, 0, 128, 0.8);
+    --light-orange: rgba(255, 165, 0, 0.9);
+    --light-pink: rgba(255, 192, 203, 0.8);
+
+    /* Balloon Colors */
+    --balloon-red: rgba(255, 69, 0, 0.9);
+    --balloon-yellow: rgba(255, 215, 0, 0.8);
+    --balloon-blue: rgba(30, 144, 255, 0.8);
+    --balloon-green: rgba(50, 205, 50, 0.8);
+    --balloon-purple: rgba(138, 43, 226, 0.8);
+    --balloon-pink: rgba(255, 20, 147, 0.8);
+
+    /* Confetti Colors */
+    --confetti-red: #FF6B6B;
+    --confetti-yellow: #FFD93D;
+    --confetti-blue: #6BCF7F;
+    --confetti-purple: #A8E6CF;
+    --confetti-orange: #FF8B94;
+    --confetti-pink: #FFAAA5;
+
+    /* Spotlight Colors */
+    --spotlight-warm: rgba(255, 248, 220, 0.6);
+    --spotlight-cool: rgba(240, 248, 255, 0.4);
+    --spotlight-center: rgba(255, 255, 255, 0.8);
+
+    /* Animation Values */
+    --light-opacity-low: 0.4;
+    --light-opacity-medium: 0.7;
+    --light-opacity-high: 0.9;
+    --balloon-opacity-low: 0.6;
+    --balloon-opacity-medium: 0.8;
+    --balloon-opacity-high: 0.9;
+
+    /* Size Variables */
+    --tent-height: 200px;
+    --tent-height-mobile: 150px;
+    --light-size-small: 8px;
+    --light-size-medium: 12px;
+    --light-size-large: 16px;
+    --balloon-size-small: 15px;
+    --balloon-size-medium: 20px;
+    --balloon-size-large: 25px;
+    --confetti-size-small: 4px;
+    --confetti-size-medium: 6px;
+    --confetti-size-large: 8px;
+}
+
+/* =========================
+   Circus Environment Effect
+   ========================= */
+.environment-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(180deg, 
+        #87CEEB 0%,          /* Sky blue */
+        #98FB98 30%,         /* Pale green */
+        #FFE4B5 60%,         /* Moccasin */
+        #FFF8DC 100%         /* Cornsilk */
+    );
+}
+
+/* Big Top Circus Tent */
+.environment-container::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 300px;
+    height: var(--tent-height);
+    background: linear-gradient(45deg, 
+        var(--tent-red) 0%,
+        var(--tent-red) 20%,
+        var(--tent-white) 20%,
+        var(--tent-white) 30%,
+        var(--tent-red) 30%,
+        var(--tent-red) 50%,
+        var(--tent-white) 50%,
+        var(--tent-white) 60%,
+        var(--tent-red) 60%,
+        var(--tent-red) 80%,
+        var(--tent-white) 80%,
+        var(--tent-white) 100%
+    );
+    background-size: 40px 40px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    transform: translateX(-50%);
+    animation: tent-sway 8s ease-in-out infinite;
+    opacity: 10%;
+}
+
+@keyframes tent-sway {
+    0%, 100% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+    50% {
+        transform: translateX(-50%) rotate(1deg);
+    }
+}
+
+/* Tent flag on top */
+.environment-container::after {
+    content: '';
+    position: absolute;
+    bottom: var(--tent-height);
+    left: 50%;
+    width: 20px;
+    height: 30px;
+    background: var(--tent-yellow);
+    clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 0% 80%);
+    transform: translateX(-50%);
+    animation: flag-wave 3s ease-in-out infinite;
+}
+
+@keyframes flag-wave {
+    0%, 100% {
+        transform: translateX(-50%) rotate(0deg);
+    }
+    50% {
+        transform: translateX(-50%) rotate(10deg);
+    }
+}
+
+/* Carnival Light String */
+.environment-element:nth-child(1) {
+    position: absolute;
+    top: 15%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        var(--light-red) 10%,
+        var(--light-yellow) 20%,
+        var(--light-blue) 30%,
+        var(--light-green) 40%,
+        var(--light-purple) 50%,
+        var(--light-orange) 60%,
+        var(--light-pink) 70%,
+        var(--light-red) 80%,
+        var(--light-yellow) 90%,
+        transparent 100%
+    );
+    border-radius: 2px;
+    animation: lights-twinkle 2s ease-in-out infinite;
+}
+
+@keyframes lights-twinkle {
+    0%, 100% {
+        opacity: 0.6;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    }
+}
+
+/* Floating Balloons */
+.environment-element:nth-child(2) {
+    position: absolute;
+    top: 25%;
+    right: 15%;
+    width: var(--balloon-size-large);
+    height: var(--balloon-size-large);
+    background: var(--balloon-red);
+    border-radius: 50%;
+    box-shadow: 
+        /* Balloon strings */
+        0 25px 0 -12px rgba(139, 69, 19, 0.6),
+        0 50px 0 -12px rgba(139, 69, 19, 0.4),
+        
+        /* More balloons */
+        30px 5px 0 0 var(--balloon-yellow),
+        60px -10px 0 0 var(--balloon-blue),
+        90px 8px 0 0 var(--balloon-green),
+        120px -5px 0 0 var(--balloon-purple),
+        
+        /* More balloon strings */
+        30px 30px 0 -12px rgba(139, 69, 19, 0.6),
+        60px 15px 0 -12px rgba(139, 69, 19, 0.6),
+        90px 33px 0 -12px rgba(139, 69, 19, 0.6),
+        120px 20px 0 -12px rgba(139, 69, 19, 0.6);
+    animation: balloons-float 6s ease-in-out infinite;
+}
+
+@keyframes balloons-float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    25% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(0deg);
+    }
+    75% {
+        transform: translateY(-8px) rotate(-2deg);
+    }
+}
+
+/* Confetti */
+.environment-element:nth-child(3) {
+    position: absolute;
+    top: 10%;
+    left: 20%;
+    width: var(--confetti-size-medium);
+    height: var(--confetti-size-medium);
+    background: var(--confetti-red);
+    border-radius: 2px;
+    box-shadow: 
+        50px 20px 0 0 var(--confetti-yellow),
+        100px 5px 0 0 var(--confetti-blue),
+        150px 25px 0 0 var(--confetti-purple),
+        200px 10px 0 0 var(--confetti-orange),
+        250px 30px 0 0 var(--confetti-pink),
+        300px 15px 0 0 var(--confetti-red),
+        350px 35px 0 0 var(--confetti-yellow),
+        400px 18px 0 0 var(--confetti-blue),
+        450px 28px 0 0 var(--confetti-purple),
+        500px 12px 0 0 var(--confetti-orange);
+    animation: confetti-fall 8s linear infinite;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* =========================
+   Navigation - Circus Theme
+   ========================= */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(180deg, 
+        rgba(255, 248, 220, 0.95) 0%,
+        rgba(255, 228, 181, 0.9) 100%
+    );
+    backdrop-filter: blur(10px);
+    border-bottom: 3px solid var(--border-color);
+    box-shadow: 
+        0 2px 20px rgba(218, 165, 32, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+/* Add carnival lights to navigation */
+nav::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, 
+        var(--light-red) 0%,
+        var(--light-yellow) 16.66%,
+        var(--light-blue) 33.33%,
+        var(--light-green) 50%,
+        var(--light-purple) 66.66%,
+        var(--light-orange) 83.33%,
+        var(--light-red) 100%
+    );
+    animation: nav-lights 3s ease-in-out infinite;
+}
+
+@keyframes nav-lights {
+    0%, 100% {
+        opacity: 0.6;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    }
+}
+
+/* Logo with circus flair */
+.logo {
+    color: var(--primary-color) !important;
+
+    position: relative;
+}
+
+.logo::before {
+    content: '🎪';
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    animation: logo-bounce 2s ease-in-out infinite;
+}
+
+@keyframes logo-bounce {
+    0%, 100% {
+        transform: translateY(-50%) scale(1);
+    }
+    50% {
+        transform: translateY(-60%) scale(1.1);
+    }
+}
+
+/* Navigation links */
+.nav-links a {
+    color: var(--secondary-color) !important;
+    position: relative;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background: var(--light-red);
+    border-radius: 50%;
+    transform: translateX(-50%) scale(0);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px var(--light-red);
+}
+
+.nav-links a:hover::before {
+    transform: translateX(-50%) scale(1);
+    animation: link-light 1s ease-in-out infinite;
+}
+
+@keyframes link-light {
+    0%, 100% {
+        background: var(--light-red);
+        box-shadow: 0 0 8px var(--light-red);
+    }
+    33% {
+        background: var(--light-yellow);
+        box-shadow: 0 0 8px var(--light-yellow);
+    }
+    66% {
+        background: var(--light-blue);
+        box-shadow: 0 0 8px var(--light-blue);
+    }
+}
+
+.nav-links a:hover {
+    color: var(--accent-color) !important;
+    text-shadow: 
+        1px 1px 0px var(--tent-yellow),
+        2px 2px 0px var(--tent-blue);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   Products Section - Circus Theme
+   ========================= */
+.product-card {
+    background: linear-gradient(135deg, 
+        rgba(255, 248, 220, 0.9) 0%,
+        rgba(255, 228, 181, 0.8) 50%,
+        rgba(255, 245, 238, 0.9) 100%
+    );
+    border: 2px solid var(--border-color);
+    backdrop-filter: blur(5px);
+    box-shadow: 
+        0 4px 20px rgba(218, 165, 32, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add circus tent striped border */
+.product-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(90deg, 
+        var(--tent-red) 0%,
+        var(--tent-red) 20%,
+        var(--tent-white) 20%,
+        var(--tent-white) 40%,
+        var(--tent-yellow) 40%,
+        var(--tent-yellow) 60%,
+        var(--tent-blue) 60%,
+        var(--tent-blue) 80%,
+        var(--tent-green) 80%,
+        var(--tent-green) 100%
+    );
+    animation: stripe-move 4s linear infinite;
+}
+
+@keyframes stripe-move {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100px 0;
+    }
+}
+
+/* Add spinning pinwheel */
+.product-card::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: 10%;
+    width: 20px;
+    height: 20px;
+    background: conic-gradient(
+        var(--tent-red) 0deg,
+        var(--tent-yellow) 60deg,
+        var(--tent-blue) 120deg,
+        var(--tent-green) 180deg,
+        var(--tent-purple) 240deg,
+        var(--tent-orange) 300deg,
+        var(--tent-red) 360deg
+    );
+    border-radius: 50%;
+    animation: pinwheel-spin 3s linear infinite;
+    pointer-events: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes pinwheel-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.product-card:hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 228, 181, 0.9) 50%,
+        rgba(255, 245, 238, 0.95) 100%
+    );
+    box-shadow: 
+        0 8px 30px rgba(218, 165, 32, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transform: translateY(-5px);
+}
+
+.product-card:hover::before {
+    animation-duration: 2s;
+    height: 10px;
+}
+
+.product-card:hover::after {
+    animation-duration: 1.5s;
+    transform: rotate(360deg) scale(1.2);
+}
+
+/* =========================
+   Work Cards - Circus Theme Integration
+   ========================= */
+.work-item {
+    background: linear-gradient(135deg, 
+        rgba(255, 248, 220, 0.9) 0%,
+        rgba(255, 228, 181, 0.8) 50%,
+        rgba(255, 245, 238, 0.9) 100%
+    );
+    backdrop-filter: blur(5px);
+    border: 2px solid var(--border-color);
+    box-shadow: 
+        0 4px 20px rgba(218, 165, 32, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add carnival game border */
+.work-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--tent-red),
+        var(--tent-red) 10px,
+        var(--tent-white) 10px,
+        var(--tent-white) 20px,
+        var(--tent-yellow) 20px,
+        var(--tent-yellow) 30px,
+        var(--tent-blue) 30px,
+        var(--tent-blue) 40px
+    );
+    animation: carnival-border 6s linear infinite;
+}
+
+@keyframes carnival-border {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 40px 0;
+    }
+}
+
+/* Add floating ticket stub */
+.work-item::after {
+    content: '';
+    position: absolute;
+    top: 20%;
+    right: 15%;
+    width: 25px;
+    height: 15px;
+    background: linear-gradient(45deg, 
+        var(--tent-yellow) 0%,
+        var(--tent-orange) 100%
+    );
+    border-radius: 2px;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    animation: ticket-float 4s ease-in-out infinite;
+    pointer-events: none;
+    position: relative;
+}
+
+.work-item::after {
+    /* Add ticket perforations */
+    border-left: 2px dashed rgba(139, 0, 0, 0.3);
+}
+
+@keyframes ticket-float {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+    }
+    25% {
+        transform: translateY(-5px) rotate(2deg);
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-8px) rotate(0deg);
+        opacity: 0.9;
+    }
+    75% {
+        transform: translateY(-3px) rotate(-2deg);
+        opacity: 1;
+    }
+}
+
+.work-item:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 228, 181, 0.9) 50%,
+        rgba(255, 245, 238, 0.95) 100%
+    );
+    box-shadow: 
+        0 8px 30px rgba(218, 165, 32, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.work-item:hover::before {
+    animation-duration: 3s;
+    height: 8px;
+}
+
+.work-item:hover::after {
+    animation-duration: 2s;
+    transform: translateY(-10px) rotate(5deg) scale(1.1);
+}
+
+/* =========================
+   Blog Cards - Circus Theme Integration
+   ========================= */
+.blog-list-item {
+    background: linear-gradient(135deg, 
+        rgba(255, 248, 220, 0.9) 0%,
+        rgba(255, 228, 181, 0.8) 50%,
+        rgba(255, 245, 238, 0.9) 100%
+    );
+    border: 2px solid var(--border-color);
+    backdrop-filter: blur(5px);
+    box-shadow: 
+        0 4px 20px rgba(218, 165, 32, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Alternate blog list items with different circus acts */
+.blog-list-item:nth-child(even) {
+    background: linear-gradient(135deg, 
+        rgba(255, 245, 238, 0.9) 0%,
+        rgba(255, 228, 181, 0.8) 50%,
+        rgba(255, 248, 220, 0.9) 100%
+    );
+}
+
+/* Add circus performer silhouettes for odd items */
+.blog-list-item:nth-child(odd)::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        var(--tent-purple) 20%,
+        var(--tent-orange) 40%,
+        var(--tent-green) 60%,
+        var(--tent-blue) 80%,
+        transparent 100%
+    );
+    animation: performer-march 8s linear infinite;
+}
+
+@keyframes performer-march {
+    0% {
+        background-position: -100px 0;
+    }
+    100% {
+        background-position: 100px 0;
+    }
+}
+
+/* Add juggling balls for odd items */
+.blog-list-item:nth-child(odd)::after {
+    content: '';
+    position: absolute;
+    top: 25%;
+    right: 12%;
+    width: 8px;
+    height: 8px;
+    background: var(--balloon-red);
+    border-radius: 50%;
+    box-shadow: 
+        15px -10px 0 0 var(--balloon-yellow),
+        30px 5px 0 0 var(--balloon-blue),
+        45px -5px 0 0 var(--balloon-green);
+    animation: juggling-balls 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes juggling-balls {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-15px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    75% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Add circus ring for even items */
+.blog-list-item:nth-child(even)::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--tent-red) 0%,
+        var(--tent-white) 25%,
+        var(--tent-red) 50%,
+        var(--tent-white) 75%,
+        var(--tent-red) 100%
+    );
+    animation: ring-rotate 5s linear infinite;
+}
+
+@keyframes ring-rotate {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 40px 0;
+    }
+}
+
+/* Add spotlight for even items */
+.blog-list-item:nth-child(even)::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, 
+        var(--spotlight-center) 0%,
+        var(--spotlight-warm) 40%,
+        var(--spotlight-cool) 80%,
+        transparent 100%
+    );
+    border-radius: 50%;
+    animation: spotlight-sweep 6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes spotlight-sweep {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.9;
+    }
+}
+
+/* Enhanced hover effects for blog items */
+.blog-list-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 8px 30px rgba(218, 165, 32, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.blog-list-item:nth-child(odd):hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 228, 181, 0.9) 50%,
+        rgba(255, 245, 238, 0.95) 100%
+    );
+}
+
+.blog-list-item:nth-child(even):hover {
+    background: linear-gradient(135deg, 
+        rgba(255, 245, 238, 0.95) 0%,
+        rgba(255, 255, 255, 0.9) 50%,
+        rgba(255, 248, 220, 0.95) 100%
+    );
+}
+
+/* Enhanced hover animations */
+.blog-list-item:nth-child(odd):hover::before {
+    animation-duration: 4s;
+    height: 6px;
+}
+
+.blog-list-item:nth-child(odd):hover::after {
+    animation-duration: 1s;
+    transform: translateY(-25px) scale(1.1);
+}
+
+.blog-list-item:nth-child(even):hover::before {
+    animation-duration: 3s;
+    height: 5px;
+}
+
+.blog-list-item:nth-child(even):hover::after {
+    animation-duration: 4s;
+    transform: scale(1.4);
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .environment-container::before {
+        width: 200px;
+        height: var(--tent-height-mobile);
+    }
+    
+    .environment-container::after {
+        bottom: var(--tent-height-mobile);
+        width: 15px;
+        height: 20px;
+    }
+    
+    .environment-element:nth-child(1) {
+        top: 20%;
+        height: 3px;
+    }
+    
+    .environment-element:nth-child(2) {
+        top: 30%;
+        right: 10%;
+        width: var(--balloon-size-medium);
+        height: var(--balloon-size-medium);
+        box-shadow: 
+            0 20px 0 -10px rgba(139, 69, 19, 0.6),
+            20px 3px 0 0 var(--balloon-yellow),
+            40px -8px 0 0 var(--balloon-blue),
+            20px 23px 0 -10px rgba(139, 69, 19, 0.6),
+            40px 12px 0 -10px rgba(139, 69, 19, 0.6);
+    }
+    
+    .environment-element:nth-child(3) {
+        width: var(--confetti-size-small);
+        height: var(--confetti-size-small);
+        box-shadow: 
+            30px 15px 0 0 var(--confetti-yellow),
+            60px 8px 0 0 var(--confetti-blue),
+            90px 20px 0 0 var(--confetti-purple),
+            120px 12px 0 0 var(--confetti-orange);
+    }
+    
+    .product-card::after,
+    .work-item::after {
+        width: 15px;
+        height: 15px;
+        top: 15%;
+        right: 8%;
+    }
+    
+    .work-item::after {
+        width: 20px;
+        height: 12px;
+    }
+    
+    .blog-list-item:nth-child(odd)::after {
+        width: 6px;
+        height: 6px;
+        top: 20%;
+        right: 8%;
+        box-shadow: 
+            10px -8px 0 0 var(--balloon-yellow),
+            20px 3px 0 0 var(--balloon-blue);
+    }
+    
+    .blog-list-item:nth-child(even)::after {
+        width: 20px;
+        height: 20px;
+        top: 15%;
+        right: 10%;
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .environment-container {
+        background: rgba(255, 248, 220, 0.9);
+    }
+    
+    .environment-container::before,
+    .environment-container::after,
+    .environment-element,
+    .product-card::before,
+    .product-card::after,
+    .work-item::before,
+    .work-item::after,
+    .blog-list-item::before,
+    .blog-list-item::after,
+    nav::after,
+    .logo::before,
+    .nav-links a::before {
+        animation: none;
+    }
+    
+    .product-card:hover,
+    .work-item:hover,
+    .blog-list-item:hover {
+        transform: none;
+    }
+}

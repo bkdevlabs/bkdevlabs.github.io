@@ -402,16 +402,8 @@ h2 {
     border-bottom: 1px solid var(--border-color);
     padding: var(--spacing-xxl);
     transition: background 0.3s;
-    background: var(--bg-color);
 }
 
-.blog-list-item:nth-child(even) {
-    background: var(--light-gray);
-}
-
-.blog-list-item:nth-child(odd) {
-    background: var(--bg-color);
-}
 
 /* Optional: Add a subtle box-shadow for more separation */
 .blog-list-item {
@@ -588,4 +580,250 @@ h2 {
 
 footer{
     text-align: center;
+}
+
+/* =========================
+   Theme Switcher 
+   ========================= */
+.theme-switcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+}
+
+.theme-toggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    background: var(--bg-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.theme-icon {
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .theme-icon {
+    transform: rotate(90deg);
+}
+
+.theme-dropdown {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    min-width: 160px;
+    z-index: 1002;
+}
+
+.theme-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: var(--radius-sm);
+    margin: var(--spacing-xs);
+}
+
+.theme-option:hover {
+    background-color: var(--light-gray);
+}
+
+.theme-option.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.theme-option.active .theme-preview {
+    border-color: white;
+}
+
+.theme-preview {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-preview-default {
+    background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%);
+}
+
+.theme-preview-ocean {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #06b6d4 100%);
+}
+
+.theme-preview-forest {
+    background: linear-gradient(135deg, #355e3b 0%, #8fbc8f 50%, #9caf88 100%);
+}
+
+.theme-preview-night {
+    background: linear-gradient(135deg, #0a0b1e 0%, #1b1b3a 50%, #2c2c54 100%);
+}
+
+/* Theme loading transition */
+.theme-loaded {
+    transition: all 0.3s ease;
+}
+
+/* Enhanced Mobile optimization */
+@media (max-width: 1024px) {
+    .theme-switcher {
+        top: 15px;
+        right: 15px;
+    }
+    
+    .theme-toggle {
+        width: 44px;
+        height: 44px;
+        border-width: 1px;
+    }
+    
+    .theme-dropdown {
+        right: -10px;
+        min-width: 140px;
+        top: 50px;
+    }
+    
+    .theme-option {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+    
+    .theme-preview {
+        width: 16px;
+        height: 16px;
+        border-width: 1px;
+    }
+}
+
+@media (max-width: 768px) {
+    .theme-switcher {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .theme-dropdown {
+        right: -15px;
+        min-width: 130px;
+        top: 46px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .theme-option {
+        padding: var(--spacing-sm);
+        gap: var(--spacing-sm);
+    }
+    
+    .theme-preview {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .theme-switcher {
+        top: 8px;
+        right: 8px;
+    }
+    
+    .theme-toggle {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .theme-dropdown {
+        right: -20px;
+        min-width: 120px;
+        top: 42px;
+    }
+    
+    .theme-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Ensure theme switcher doesn't interfere with navigation */
+@media (max-width: 768px) {
+    .nav-container {
+        /* Add right padding to prevent overlap */
+        padding-right: 60px;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .theme-toggle {
+        border-width: 3px;
+    }
+    
+    .theme-preview {
+        border-width: 3px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .theme-toggle,
+    .theme-dropdown,
+    .theme-option,
+    .theme-icon {
+        transition: none;
+    }
+}
+
+/* Alternative: If you still want bottom positioning on mobile */
+@media (max-width: 480px) {
+    .theme-switcher.bottom-mobile {
+        position: fixed;
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+        left: auto;
+    }
+    
+    .theme-switcher.bottom-mobile .theme-dropdown {
+        top: auto;
+        bottom: 50px;
+        right: 0;
+    }
 }

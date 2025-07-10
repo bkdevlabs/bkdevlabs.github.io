@@ -10,8 +10,54 @@
     {{ block "styles" . }}
     <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">
     {{ end }}
+    
+    <!-- Theme loading script (runs immediately to prevent flash) -->
+    <script>
+        (function() {
+            const getStoredTheme = () => {
+                try {
+                    const stored = localStorage.getItem('selectedTheme');
+                    if (stored && stored !== 'default') return stored;
+                    
+                    const cookieMatch = document.cookie.match(/theme=([^;]+)/);
+                    if (cookieMatch && cookieMatch[1] !== 'default') return cookieMatch[1];
+                } catch (e) {
+                    // Ignore errors
+                }
+                return null;
+            };
+            
+            const theme = getStoredTheme();
+            if (theme) {
+                document.documentElement.classList.add(`theme-${theme}`);
+                
+                // Load theme stylesheet immediately
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = `/css/${theme}.css`;
+                link.setAttribute('data-theme', theme);
+                document.head.appendChild(link);
+            }
+        })();
+    </script>
 </head>
 <body>
+    <!-- Theme Switcher -->
+    {{ partial "theme-switcher.html" . }}
+    
+    <!-- Environment Background -->
+    <div class="environment-container">
+        <!-- Primary environment elements -->
+        <div class="environment-element"></div>
+        <div class="environment-element"></div>
+        <div class="environment-element"></div>
+        
+        <!-- Secondary environment elements -->
+        <div class="environment-accent"></div>
+        <div class="environment-accent"></div>
+        <div class="environment-accent"></div>
+    </div>
+    
     {{ partial "header.html" . }}
     
     <main>
@@ -22,6 +68,7 @@
     
     {{ block "scripts" . }}
     <script src="{{ "js/main.js" | relURL }}"></script>
+    <script src="{{ "js/theme-switcher.js" | relURL }}"></script>
     {{ end }}
 </body>
 </html>

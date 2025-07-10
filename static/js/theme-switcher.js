@@ -66,7 +66,7 @@ class ThemeSwitcher {
     
     applyTheme(theme) {
         // Remove existing theme classes
-        document.documentElement.classList.remove('theme-ocean', 'theme-forest', 'theme-night');
+        document.documentElement.classList.remove('theme-ocean', 'theme-forest', 'theme-night', 'theme-circus');
         
         // Remove existing theme stylesheets
         const existingThemeLinks = document.querySelectorAll('link[data-theme]');
@@ -116,6 +116,9 @@ class ThemeSwitcher {
                 break;
             case 'night':
                 themeColor = '#0a0b1e';
+                break;
+            case 'circus':
+                themeColor = '#DC143C';
                 break;
         }
         

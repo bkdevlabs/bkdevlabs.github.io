@@ -13,6 +13,7 @@
     
     <div class="work-grid" id="work-list">
         {{ range .Pages }}
+        {{ $productionLink := or .Params.project_link .Params.production_link .Params.product_link .Params.project_url (index .Params "project-url") }}
         <div class="work-item searchable-item" data-title="{{ .Title | lower }}" data-description="{{ .Params.description | default "" | lower }}" data-tech="{{ if .Params.technologies }}{{ delimit .Params.technologies " " | lower }}{{ end }}">
             <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
             <p>{{ .Params.description | default "No description available." }}</p>
@@ -23,10 +24,10 @@
                 {{ end }}
             </div>
             {{ end }}
-            {{ if or .Params.github_link .Params.project_link }}
+            {{ if or .Params.github_link $productionLink }}
             <div class="project-links" style="margin-top: 1rem;">
-                {{ if .Params.project_link }}
-                <a href="{{ .Params.project_link }}" class="read-more" target="_blank" rel="noopener">View Project →</a>
+                {{ if $productionLink }}
+                <a href="{{ $productionLink }}" class="read-more" target="_blank" rel="noopener">Visit Website →</a>
                 {{ end }}
                 {{ if .Params.github_link }}
                 <a href="{{ .Params.github_link }}" class="read-more" target="_blank" rel="noopener">GitHub →</a>

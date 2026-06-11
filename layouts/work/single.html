@@ -32,10 +32,11 @@
         </div>
         {{ end }}
 
+        {{ $productionLink := or .Params.project_link .Params.production_link .Params.product_link .Params.project_url (index .Params "project-url") }}
         <div class="project-links">
-            {{ if .Params.project_link }}
-            <a href="{{ .Params.project_link }}" class="project-link" target="_blank" rel="noopener">
-                View Live Project
+            {{ if $productionLink }}
+            <a href="{{ $productionLink }}" class="project-link" target="_blank" rel="noopener">
+                View Website
             </a>
             {{ end }}
             {{ if .Params.github_link }}

@@ -515,6 +515,47 @@ h2 {
     max-width: 900px;
     margin: 0 auto;
     padding: 0 var(--spacing-xl) var(--spacing-section);
+    font-size: var(--font-size-md);
+    line-height: 1.8;
+}
+
+.single-content p {
+    margin-bottom: var(--spacing-xl);
+}
+
+.single-content h2 {
+    margin-top: var(--spacing-xxxl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.single-content h2:first-child {
+    margin-top: 0;
+}
+
+.single-content h3 {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-medium);
+    color: var(--primary-color);
+    margin-top: var(--spacing-xxl);
+    margin-bottom: var(--spacing-lg);
+}
+
+.single-content h4 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    color: var(--primary-color);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.single-content ul,
+.single-content ol {
+    margin-bottom: var(--spacing-xl);
+    padding-left: var(--spacing-xxl);
+}
+
+.single-content li {
+    margin-bottom: var(--spacing-sm);
 }
 
 .project-links {

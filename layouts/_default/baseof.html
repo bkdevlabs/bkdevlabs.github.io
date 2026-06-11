@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
     <meta name="description" content="{{ .Site.Params.description }}">
+    {{ $canonicalURL := or (.Param "canonicalURL") (.Param "canonicalUrl") (.Param "canonicalurl") (.Param "canonical_url") .Permalink }}
+    <link rel="canonical" href="{{ $canonicalURL }}">
     <link rel="icon" type="image/svg+xml" href="{{ "assets/favicon.svg" | relURL }}">
     
     {{ block "styles" . }}

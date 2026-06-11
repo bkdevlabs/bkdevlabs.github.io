@@ -1,8 +1,8 @@
 ---
 title: "FormBuilder Pro"
 date: 2024-08-15T10:00:00-05:00
-draft: false
-featured: true
+draft: true
+featured: false
 description: "Drag-and-drop form builder with advanced validation, conditional logic, and seamless third-party integrations."
 version: "1.5.2"
 status: "Production Ready"
